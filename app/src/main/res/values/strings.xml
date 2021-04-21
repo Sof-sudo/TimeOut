@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TimeOut</string>
+    <string name="txtTeamName">"Team Name "</string>
 </resources>

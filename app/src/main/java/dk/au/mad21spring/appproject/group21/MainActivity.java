@@ -1,18 +1,52 @@
 package dk.au.mad21spring.appproject.group21;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    private int Test;
-    private int Test2;
+public class MainActivity extends AppCompatActivity implements TeamAdapter.ITeamItemClickedListener {
+
+    // ui widgets
+    private RecyclerView rcvTeams;
+
+    // adapter for recyclerView pattern
+    private TeamAdapter adapter;
+
+    // viewModel
+    private ListViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        vm = new ViewModelProvider(this).get(ListViewModel.class);
+        vm.getTeams().observe(this, new Observer<ArrayList<Team>>() {
+            @Override
+            public void onChanged(ArrayList<Team> list) {
+                adapter.updateTeamList(list);
+            }
+        });
+
+        setupUI();
+
     }
 
+    private void setupUI() {
+        rcvTeams = findViewById(R.id.rcvTeams);
+        rcvTeams.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new TeamAdapter(this);
+        rcvTeams.setAdapter(adapter);
+    }
+
+    @Override
+    public void onTeamClicked(int index) {
+
+    }
 }
