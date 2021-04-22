@@ -15,7 +15,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import dk.au.mad21spring.appproject.group21.API_AllTeams.AllTeams;
+
 
 
 public class WEP_API {
@@ -66,10 +66,10 @@ public class WEP_API {
 
     private void parseJson(String json, boolean update) {
         Gson gson = new GsonBuilder().create();
-        AllTeams teamData = gson.fromJson(json, AllTeams.class);
-        if(teamData != null){
-            Team team = new Team("teamName","CityName");
-        }
+        //BasketBallTeamsAPI teamData = gson.fromJson(json, BasketBallTeamsAPI.class);
+       // if(teamData != null){
+         //   Team team = new Team("teamName","CityName");
+        //}
 
 
 
