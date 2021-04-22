@@ -1,11 +1,12 @@
 
-package dk.au.mad21spring.appproject.group21.API_AllTeams;
+package dk.au.mad21spring.appproject.group21.Teams_API;
 
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Datum {
+
+public class BasketBallTeamsAPI {
 
     @SerializedName("id")
     @Expose

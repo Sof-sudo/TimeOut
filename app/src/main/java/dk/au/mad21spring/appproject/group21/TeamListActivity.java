@@ -10,31 +10,31 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements TeamAdapter.ITeamItemClickedListener {
+import dk.au.mad21spring.appproject.group21.Database.Teams;
+
+public class TeamListActivity extends AppCompatActivity implements TeamAdapter.ITeamItemClickedListener {
 
     // ui widgets
     private RecyclerView rcvList;
     private TeamAdapter adapter;
 
     // viewmodel
-    private ListViewModel vm;
+    private TeamListViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        vm = new ViewModelProvider(this).get(ListViewModel.class);
-        vm.getTeams().observe(this, new Observer<ArrayList<Team>>() {
+        vm = new ViewModelProvider(this).get(TeamListViewModel.class);
+        vm.getTeams().observe(this, new Observer<ArrayList<Teams>>() {
             @Override
-            public void onChanged(ArrayList<Team> list) {
+            public void onChanged(ArrayList<Teams> list) {
                 adapter.updateTeamList(list);
             }
         });
 
         setupUI();
-
-
     }
 
     private void setupUI() {

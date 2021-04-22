@@ -9,8 +9,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import dk.au.mad21spring.appproject.group21.Database.Teams;
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder> {
 
@@ -19,14 +23,14 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
     }
 
     private ITeamItemClickedListener listener;
-    private List<Team> TeamList;
+    private List<Teams> TeamList;
 
     public TeamAdapter(ITeamItemClickedListener listener){
         this.listener = listener;
-        TeamList = new ArrayList<>();
+        TeamList = new ArrayList<Teams>();
     }
 
-    public void updateTeamList(List<Team> lists){
+    public void updateTeamList(List<Teams> lists){
         TeamList = lists;
         notifyDataSetChanged();
     }
@@ -43,7 +47,9 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TeamViewHolder holder, int position) {
-        holder.txtTeamName.setText(TeamList.get(position).TeamName);
+        Glide.with(holder.imgTeamLogo.getContext()).load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/lal.png")
+                .into(holder.imgTeamLogo);
+        holder.txtTeamName.setText(TeamList.get(position).getFullname());
 
 
     }
