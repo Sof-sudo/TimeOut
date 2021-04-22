@@ -1,9 +1,12 @@
 package dk.au.mad21spring.appproject.group21.Database;
 
+import androidx.room.Entity;
+
 import java.util.Date;
 
 import dk.au.mad21spring.appproject.group21.Team;
 
+@Entity
 public class Games {
 
     private int gameID;

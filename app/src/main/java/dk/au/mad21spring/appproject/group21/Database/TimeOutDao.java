@@ -11,27 +11,39 @@ import androidx.room.OnConflictStrategy;
 import java.util.List;
 import dk.au.mad21spring.appproject.group21.Database.Teams;
 
+import static android.icu.text.MessagePattern.ArgType.SELECT;
+
 @Dao
 public interface TimeOutDao {
 
-        /*
-        @Query("SELECT * FROM teams")
-        LiveData<List<Teams>> getAll();
+    //TEAMS
+    @Query("SELECT * FROM teams")
+    LiveData<List<Teams>> getAllTeams();
 
-        @Query("SELECT * FROM teams WHERE team LIKE :name")
-        Teams findTeam(String name);
+    @Query("SELECT * FROM teams WHERE name LIKE :name")
+    Teams findTeam(String name);
 
-        @Update
-        void updateTeam(Teams team);*/
+    @Update
+    void updateTeam(Teams team);
 
-    /* MAN SKAL VEL IKKE KUNNE TILFØJE ELLER SLETTE TEAMS?
+    //PLAYERS
+    @Query("SELECT * FROM player")
+    LiveData<List<Player>> getAllPlayers();
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void addTeam(Teams team);
+    @Query("SELECT * FROM player WHERE firstname LIKE :firstname AND " + "lastname LIKE :lastname LIMIT 1")
+    Player findPlayer(String firstname, String lastname);
 
-    @Delete
-    void delete(Teams team);
+    @Update
+    void updatePlayer(Player player);
 
-     */
+    //GAMES
+    @Query("SELECT * FROM games")
+    LiveData<List<Games>> getAllGames();
 
+    @Query("SELECT * FROM games WHERE date LIKE :date")
+    Games findGames(String date);
+
+    //STATS
+    @Query("SELECT * FROM stats")
+    LiveData<List<Stats>> getAllStats();
 }

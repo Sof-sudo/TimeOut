@@ -1,5 +1,8 @@
 package dk.au.mad21spring.appproject.group21.Database;
 
+import androidx.room.Entity;
+
+@Entity
 public class Player {
     private int playerID;
     private String firstname;
