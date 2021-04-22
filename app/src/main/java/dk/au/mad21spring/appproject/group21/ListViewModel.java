@@ -18,7 +18,7 @@ public class ListViewModel extends ViewModel {
 
             teamList.add(new Team("Los Angeles Lakers", "Los Angeles"));
             teamList.add(new Team("Boston Celtics", "Boston"));
-
+            teamList.add(new Team("Atlanta Hawks", "Atlanta"));
 
             teams.setValue(teamList);
         }
