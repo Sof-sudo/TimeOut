@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 
-public class ListViewModel extends ViewModel {
+public class TeamListViewModel extends ViewModel {
 
     MutableLiveData<ArrayList<Team>> teams;
 
