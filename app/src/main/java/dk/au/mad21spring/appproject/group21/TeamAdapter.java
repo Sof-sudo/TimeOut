@@ -47,11 +47,10 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TeamViewHolder holder, int position) {
-        Glide.with(holder.imgTeamLogo.getContext()).load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/lal.png")
-                .into(holder.imgTeamLogo);
+        Glide.with(holder.imgTeamLogo.getContext())
+                .load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+TeamList.get(position)
+                        .getAbbreviation().toLowerCase()+".png").into(holder.imgTeamLogo);
         holder.txtTeamName.setText(TeamList.get(position).getFullname());
-
-
     }
 
     @Override
@@ -69,7 +68,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
             super(itemView);
 
             txtTeamName = itemView.findViewById(R.id.txtTeamName);
-            imgTeamLogo = itemView.findViewById(R.id.imgTeamLogo); // skal bruges til at få logoer ind i listen.
+            imgTeamLogo = itemView.findViewById(R.id.imgTeamLogo);
             listener = teamItemClickedListener;
 
             itemView.setOnClickListener(this);
