@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -14,8 +15,6 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.ITeam
 
     // ui widgets
     private RecyclerView rcvTeams;
-
-    // adapter for recyclerView pattern
     private TeamAdapter adapter;
 
     // viewModel
@@ -39,9 +38,9 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.ITeam
     }
 
     private void setupUI() {
+        adapter = new TeamAdapter(this);
         rcvTeams = findViewById(R.id.rcvTeams);
         rcvTeams.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new TeamAdapter(this);
         rcvTeams.setAdapter(adapter);
     }
 

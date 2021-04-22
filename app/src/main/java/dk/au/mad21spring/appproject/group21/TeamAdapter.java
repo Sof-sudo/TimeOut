@@ -3,7 +3,6 @@ package dk.au.mad21spring.appproject.group21;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,6 +42,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TeamViewHolder holder, int position) {
+        holder.txtTeamName.setText(TeamList.get(position).TeamName);
 
     }
 
@@ -54,15 +54,12 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
     public class TeamViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         // ui widgets
-        ImageView imgCountry;
-        TextView txtName;
-        TextView txtTemp;
-        TextView txtWeather;
-        TextView txtRating;
+        TextView txtTeamName;
 
         public TeamViewHolder(@NonNull View itemView, TeamAdapter.ITeamItemClickedListener teamItemClickedListener){
             super(itemView);
 
+            txtTeamName = itemView.findViewById(R.id.txtTeamName);
             listener = teamItemClickedListener;
 
             itemView.setOnClickListener(this);
