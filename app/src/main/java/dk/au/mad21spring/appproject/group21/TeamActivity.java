@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import dk.au.mad21spring.appproject.group21.Database.Teams;
+
 public class TeamActivity extends AppCompatActivity {
 
     //widgets
@@ -86,7 +88,7 @@ public class TeamActivity extends AppCompatActivity {
     private void showGames()
     {}
 
-    private void updateUI(Team team)
+    private void updateUI(Teams team)
     {}
 
 }
