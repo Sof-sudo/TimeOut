@@ -22,6 +22,7 @@ public abstract class TimeOutDatabase extends RoomDatabase {
                 if(instance == null){
                     instance = Room.databaseBuilder(context.getApplicationContext(),
                             TimeOutDatabase.class,"team_database")
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }

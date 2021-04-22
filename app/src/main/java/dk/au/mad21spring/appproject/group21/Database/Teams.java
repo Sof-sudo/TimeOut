@@ -1,10 +1,12 @@
 package dk.au.mad21spring.appproject.group21.Database;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class Teams {
 
+    @PrimaryKey
     private int teamID;
     private String abbreviation;
     private String city;
@@ -26,8 +28,8 @@ public class Teams {
     public int getTeamID(){return teamID;}
     public void setTeamID(int teamID){this.teamID = teamID;}
 
-    public String getAbb(){return abbreviation;}
-    public void setAbb(String abbreviation){this.abbreviation = abbreviation;}
+    public String getAbbreviation(){return abbreviation;}
+    public void setAbbreviation(String abbreviation){this.abbreviation = abbreviation;}
 
     public String getCity(){return city;}
     public void setCity(String city){this.city = city;}

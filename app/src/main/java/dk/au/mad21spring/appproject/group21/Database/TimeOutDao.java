@@ -15,7 +15,7 @@ import static android.icu.text.MessagePattern.ArgType.SELECT;
 
 @Dao
 public interface TimeOutDao {
-
+/*
     //TEAMS
     @Query("SELECT * FROM teams")
     LiveData<List<Teams>> getAllTeams();
@@ -45,5 +45,5 @@ public interface TimeOutDao {
 
     //STATS
     @Query("SELECT * FROM stats")
-    LiveData<List<Stats>> getAllStats();
+    LiveData<List<Stats>> getAllStats();*/
 }
