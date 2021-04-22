@@ -10,6 +10,8 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+import dk.au.mad21spring.appproject.group21.Database.Teams;
+
 public class TeamListActivity extends AppCompatActivity implements TeamAdapter.ITeamItemClickedListener {
 
     // ui widgets
@@ -25,9 +27,9 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
         setContentView(R.layout.activity_main);
 
         vm = new ViewModelProvider(this).get(TeamListViewModel.class);
-        vm.getTeams().observe(this, new Observer<ArrayList<Team>>() {
+        vm.getTeams().observe(this, new Observer<ArrayList<Teams>>() {
             @Override
-            public void onChanged(ArrayList<Team> list) {
+            public void onChanged(ArrayList<Teams> list) {
                 adapter.updateTeamList(list);
             }
         });

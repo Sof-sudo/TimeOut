@@ -6,19 +6,19 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 
+import dk.au.mad21spring.appproject.group21.Database.Teams;
+
 public class TeamListViewModel extends ViewModel {
 
-    MutableLiveData<ArrayList<Team>> teams;
+    MutableLiveData<ArrayList<Teams>> teams;
 
-    public LiveData<ArrayList<Team>> getTeams() {
+    public LiveData<ArrayList<Teams>> getTeams() {
         if(teams == null){
             teams = new MutableLiveData<>();
 
-            ArrayList<Team> teamList = new ArrayList<Team>();
+            ArrayList<Teams> teamList = new ArrayList<Teams>();
 
-            teamList.add(new Team("Los Angeles Lakers", "Los Angeles"));
-            teamList.add(new Team("Boston Celtics", "Boston"));
-            teamList.add(new Team("Atlanta Hawks", "Atlanta"));
+            teamList.add(new Teams(1, "LAL", "Los Angeles", "West", "Pacific", "Los Angeles Lakers", "Lakers"));
 
             teams.setValue(teamList);
         }
