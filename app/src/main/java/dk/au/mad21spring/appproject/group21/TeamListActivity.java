@@ -10,21 +10,21 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements TeamAdapter.ITeamItemClickedListener {
+public class TeamListActivity extends AppCompatActivity implements TeamAdapter.ITeamItemClickedListener {
 
     // ui widgets
     private RecyclerView rcvList;
     private TeamAdapter adapter;
 
     // viewmodel
-    private ListViewModel vm;
+    private TeamListViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        vm = new ViewModelProvider(this).get(ListViewModel.class);
+        vm = new ViewModelProvider(this).get(TeamListViewModel.class);
         vm.getTeams().observe(this, new Observer<ArrayList<Team>>() {
             @Override
             public void onChanged(ArrayList<Team> list) {
@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity implements TeamAdapter.ITeam
         });
 
         setupUI();
-
-
     }
 
     private void setupUI() {

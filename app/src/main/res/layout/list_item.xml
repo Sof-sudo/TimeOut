@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgTeamLogo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgTeamLogo"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/txtTeamName" />
 
