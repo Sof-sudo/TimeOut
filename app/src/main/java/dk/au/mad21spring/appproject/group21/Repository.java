@@ -3,6 +3,7 @@ package dk.au.mad21spring.appproject.group21;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -21,6 +22,7 @@ public class Repository {
     private ExecutorService executor;
     private static Repository instance;
     private Application app;
+    private LiveData<List<Team>> teamlist;
 
     //contructor
     public Repository(Application app){
@@ -28,6 +30,7 @@ public class Repository {
         executor = Executors.newSingleThreadExecutor();
         this.app = app;
         wep_api = new WEP_API(app, this);
+        teamlist = db.teamDao().getAllTeams();
     }
 
     // Singleton repository - Created with help from Tri.
@@ -40,7 +43,11 @@ public class Repository {
 
 
     public LiveData<List<Team>> loadAllTeams(){
-        return db.teamDao().getAllTeams();
+        if (teamlist == null){
+            return new MutableLiveData<List<Team>>();
+        } else  {
+            return teamlist;
+        }
     }
 
     //add a new team to the database asynch

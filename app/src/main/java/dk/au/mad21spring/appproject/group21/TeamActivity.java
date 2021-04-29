@@ -28,7 +28,7 @@ public class TeamActivity extends AppCompatActivity {
     private String teamName;
 
     //OBS MOVE TO CONSTANTS
-    public static final String TEAM = "Team";
+    public static final String TEAM = "TEAM";
 
     //viewmodel
     private TeamViewModel viewModel;
@@ -41,7 +41,7 @@ public class TeamActivity extends AppCompatActivity {
         Intent data = getIntent();
         teamName = data.getStringExtra(TEAM);
 
-        viewModel = new ViewModelProvider(this).get(TeamViewModel.class);
+        viewModel = new ViewModelProvider(this, new TeamViewModelFactory(getApplication())).get(TeamViewModel.class);
         viewModel.getTeam(teamName).observe(this, new Observer<Team>() {
             @Override
             public void onChanged(Team team)

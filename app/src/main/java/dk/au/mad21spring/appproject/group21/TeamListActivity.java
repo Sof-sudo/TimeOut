@@ -15,6 +15,8 @@ import dk.au.mad21spring.appproject.group21.Database.Team;
 
 public class TeamListActivity extends AppCompatActivity implements TeamAdapter.ITeamItemClickedListener {
 
+    public static final String TEAM = "TEAM";
+
     // ui widgets
     private RecyclerView rcvList;
     private TeamAdapter adapter;
@@ -48,8 +50,9 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
 
     @Override
     public void onTeamClicked(int index) {
-        Intent intent = new Intent(this,TeamActivity.class);
-        intent.putExtra("INDEX",index);
+        Team team = vm.getTeams().getValue().get(index);
+        Intent intent = new Intent(this, TeamActivity.class);
+        intent.putExtra(TEAM,team.getName());
         startActivity(intent);
 
     }
