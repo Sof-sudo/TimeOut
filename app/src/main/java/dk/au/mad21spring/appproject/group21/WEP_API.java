@@ -32,7 +32,7 @@ public class WEP_API {
     private RequestQueue requestQueue;
 
 
-    private void addTeam(String teamNumber) {
+    private void addTeam(int teamNumber) {
         String base = "https://www.balldontlie.io/api/v1/teams/" + teamNumber;
         executor.execute(new Runnable() {
             @Override
@@ -42,6 +42,17 @@ public class WEP_API {
         });
     }
 
+    // ud fra deres id, skal lige finde ud af hvordan vi skal hente spillerne
+    // kan være vi skal have en ny WEP_API klasse til det?
+    private void getPlayers(int playerNumber){
+        String base = "https://www.balldontlie.io/api/v1/players/" + playerNumber;
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                sendRequest(base,false);
+            }
+        });
+    }
 
     private void sendRequest(String url, boolean update) {
         if (requestQueue == null) {
