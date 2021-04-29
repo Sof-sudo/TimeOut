@@ -1,5 +1,7 @@
 package dk.au.mad21spring.appproject.group21;
 
+import android.app.Application;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,7 +15,9 @@ public class TeamListViewModel extends ViewModel {
 
     private Repository repository;
 
-    MutableLiveData<List<Teams>> teams;
+    public TeamListViewModel(Application app){
+        repository = Repository.getInstance(app);
+    }
 
     public LiveData<List<Teams>> getTeams() {
 

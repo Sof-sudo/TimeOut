@@ -27,7 +27,7 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teamlist);
 
-        vm = new ViewModelProvider(this).get(TeamListViewModel.class);
+        vm = new ViewModelProvider(this, new TeamListViewModelFactory(getApplication())).get(TeamListViewModel.class);
         vm.getTeams().observe(this, new Observer<List<Teams>>() {
             @Override
             public void onChanged(List<Teams> list) {

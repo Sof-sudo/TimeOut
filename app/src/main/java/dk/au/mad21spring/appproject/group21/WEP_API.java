@@ -34,13 +34,14 @@ public class WEP_API {
 
 
     public void getAllTeams() {
-        String base = "https://www.balldontlie.io/api/v1/teams/";
+        String base = "https://www.balldontlie.io/api/v1/teams/1";
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                for(int i=1; i<30; i++){ // there is 30 teams
+                sendRequest(base, false);
+                /*for(int i=1; i<31; i++){ // there is 30 teams
                     sendRequest(base + i, false);
-                }
+                }*/
             }
         });
     }
