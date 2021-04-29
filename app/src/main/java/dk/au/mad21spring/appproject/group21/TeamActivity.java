@@ -71,7 +71,7 @@ public class TeamActivity extends AppCompatActivity {
             }
         });
 
-        players.setOnClickListener(new View.OnClickListener() {
+        games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showGames();
