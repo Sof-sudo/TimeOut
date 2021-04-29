@@ -31,7 +31,7 @@
         android:layout_width="243dp"
         android:layout_height="47dp"
         android:layout_marginTop="32dp"
-        android:text="LA Lakers"
+        android:text="@string/txtTeamName"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="@+id/imgLogoPlayer"
         app:layout_constraintStart_toStartOf="@+id/imgLogoPlayer"
