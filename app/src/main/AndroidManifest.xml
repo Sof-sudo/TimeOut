@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TimeOut">
-        <activity android:name=".TeamActivity"></activity>
+        <activity android:name=".PlayerActivity"></activity>
+        <activity android:name=".TeamActivity" />
         <activity android:name=".TeamListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
