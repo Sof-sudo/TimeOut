@@ -17,9 +17,11 @@ public class PlayerViewModel extends ViewModel {
     repository = Repository.getInstance(app);
     }
 
-//    public LiveData<List<Player>> getAll() {
-//        return repository.LoadData();
-//    }
+    // Når repository er færdig
+    public LiveData<List<Player>> getAll() {
+       // return repository.LoadPlayers();
+        return  null;
+    }
 
 
 }

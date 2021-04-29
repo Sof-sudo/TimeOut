@@ -42,19 +42,13 @@ public static final String INDEX = "index";
 
         // Oprettelse af ViewModel
         playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
-//        playerViewModel.getAll().observe(this, new Observer<List<Player>>() {
-//            @Override
-//            public void onChanged(List<Player> players) {
-//
-//            }
-//        });
-//        playerViewModel.getAll().observe(this, new Observer<List<Player>>() {
-//            @Override
-//            public void onChanged(List<Player> players) {
-//                players.get(uid);
-//                updateUI();
-//            }
-//        });
+        playerViewModel.getAll().observe(this, new Observer<List<Player>>() {
+            @Override
+            public void onChanged(List<Player> players) {
+                players.get(uid);
+                updateUI();
+            }
+        });
 
 
 
@@ -74,10 +68,16 @@ public static final String INDEX = "index";
 
     private void updateUI() {
 
+      //  String base = "https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+TeamList.get(position).getAbbreviation().toLowerCase()+".png").into(holder.imgTeamLogo);
 //        Glide.with(holder.imgTeamLogo.getContext())
 //                .load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+TeamList.get(position)
 //                        .getAbbreviation().toLowerCase()+".png").into(holder.imgTeamLogo);
 //        holder.txtTeamName.setText(TeamList.get(position).getFullname());
+
+        txtTeam.setText("Team");
+
+        // hvordan får vi lige flere spillere ind??
+        txtPlayers.setText(player.getFirstname()+player.getLastname()+" Position: " +player.getPosition() );
 
 
 
