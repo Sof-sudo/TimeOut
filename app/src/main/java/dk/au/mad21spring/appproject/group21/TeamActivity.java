@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import dk.au.mad21spring.appproject.group21.Database.Team;
 
 public class TeamActivity extends AppCompatActivity {
@@ -54,7 +56,6 @@ public class TeamActivity extends AppCompatActivity {
         players = findViewById(R.id.btnPlayers);
         games = findViewById(R.id.btnGames);
 
-
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +88,9 @@ public class TeamActivity extends AppCompatActivity {
     {}
 
     private void updateUI(Team team)
-    {}
+    {
+        Glide.with(this).load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+team.getAbbreviation().toLowerCase()+".png").into(logo);
+        name.setText(team.getName());
+    }
 
 }
