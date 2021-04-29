@@ -24,24 +24,25 @@ public class WEP_API {
     private Repository repository;
 
 
-    public WEP_API(Application app) {
+    public WEP_API(Application app, Repository repository) {
 
         executor = Executors.newSingleThreadExecutor();
         this.app = app;
+        this.repository = repository;
     }
 
     private RequestQueue requestQueue;
 
 
     public void getAllTeams() {
-        String base = "https://www.balldontlie.io/api/v1/teams/1";
+        String base = "https://www.balldontlie.io/api/v1/teams/";
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                sendRequest(base, false);
-                /*for(int i=1; i<31; i++){ // there is 30 teams
+                //sendRequest(base, false);
+                for(int i=1; i<31; i++){ // there is 30 teams
                     sendRequest(base + i, false);
-                }*/
+                }
             }
         });
     }

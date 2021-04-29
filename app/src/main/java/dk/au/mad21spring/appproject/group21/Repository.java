@@ -24,7 +24,7 @@ public class Repository {
         db = TimeOutDatabase.getDatabase(app.getApplicationContext());
         executor = Executors.newSingleThreadExecutor();
         this.app = app;
-        wep_api = new WEP_API(app);
+        wep_api = new WEP_API(app, this);
     }
 
     // Singleton repository - Created with help from Tri.
