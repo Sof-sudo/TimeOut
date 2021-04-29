@@ -18,10 +18,10 @@ public class Games {
     private boolean postseason;
 
     //Teams
-    private Teams homeTeam;
-    private Teams visitorTeam;
+    //private Teams homeTeam;
+    //private Teams visitorTeam;
 
-    public Games(int gameID, String date, int homeTeamScore, int visitorTeamScore, int season, int period, String status, String time, boolean postseason, Teams homeTeam, Teams visitorTeam){
+    public Games(int gameID, String date, int homeTeamScore, int visitorTeamScore, int season, int period, String status, String time, boolean postseason){
         this.gameID = gameID;
         this.date = date;
         this.homeTeamScore = homeTeamScore;
@@ -31,8 +31,8 @@ public class Games {
         this.status = status;
         this.time = time;
         this.postseason = postseason;
-        this.homeTeam = homeTeam; //ER DET ET TEAMS OBJEKT ELLER SKAL MAN HAVE ALLE VARIABLE SOM I TEAMSKLASSEN HERIND?
-        this.visitorTeam = visitorTeam;
+        //this.homeTeam = homeTeam; //ER DET ET TEAMS OBJEKT ELLER SKAL MAN HAVE ALLE VARIABLE SOM I TEAMSKLASSEN HERIND?
+        //this.visitorTeam = visitorTeam;
     }
 
     public int getGameID(){return gameID;}
@@ -62,9 +62,11 @@ public class Games {
     public boolean getPostseason(){return postseason;}
     public void setPostseason(boolean postseason){this.postseason = postseason;}
 
-    public Teams getHomeTeam(){return homeTeam;}
+    /*public Teams getHomeTeam(){return homeTeam;}
     public void setHomeTeam(Teams homeTeam){this.homeTeam = homeTeam;}
 
     public Teams getVisitorTeam(){return visitorTeam;}
     public void setVisitorTeam(Teams visitorTeam){this.visitorTeam = visitorTeam;}
+*/
 }
+

@@ -14,9 +14,9 @@ public class Player {
     private double height_feet;
     private double height_inches;
     private double weight_pounds;
-    private Teams team;
+    //private Teams team;
 
-    public Player(int playerID, String firstname, String lastname, String position, double height_feet, double height_inches, double weight_pounds, Teams team){
+    public Player(int playerID, String firstname, String lastname, String position, double height_feet, double height_inches, double weight_pounds){
         this.playerID = playerID;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -24,7 +24,7 @@ public class Player {
         this.height_feet = height_feet;
         this.height_inches = height_inches;
         this.weight_pounds = weight_pounds;
-        this.team = team; //SKAL DENNE HENTES SÅDAN? ELLER MULIGVIS FRA DATABASEN I STEDET?
+        //this.team = team; //SKAL DENNE HENTES SÅDAN? ELLER MULIGVIS FRA DATABASEN I STEDET?
     }
 
     public int getPlayerID(){return playerID;}

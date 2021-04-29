@@ -1,4 +1,4 @@
-package dk.au.mad21spring.appproject.group21.Database;
+package dk.au.mad21spring.appproject.group21.Database.Dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -7,9 +7,11 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import dk.au.mad21spring.appproject.group21.Database.Player;
+
 @Dao
 public interface PlayerDao {
-    //PLAYERS
+
     @Query("SELECT * FROM player")
     LiveData<List<Player>> getAllPlayers();
 
