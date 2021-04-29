@@ -10,12 +10,13 @@ import androidx.room.OnConflictStrategy;
 
 import java.util.List;
 import dk.au.mad21spring.appproject.group21.Database.Teams;
+import dk.au.mad21spring.appproject.group21.Database.Player;
 
 import static android.icu.text.MessagePattern.ArgType.SELECT;
 
 @Dao
 public interface TimeOutDao {
-/*
+
     //TEAMS
     @Query("SELECT * FROM teams")
     LiveData<List<Teams>> getAllTeams();
@@ -26,6 +27,10 @@ public interface TimeOutDao {
     @Update
     void updateTeam(Teams team);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void addTeam(Teams team);
+
+    /*
     //PLAYERS
     @Query("SELECT * FROM player")
     LiveData<List<Player>> getAllPlayers();
@@ -45,5 +50,7 @@ public interface TimeOutDao {
 
     //STATS
     @Query("SELECT * FROM stats")
-    LiveData<List<Stats>> getAllStats();*/
+    LiveData<List<Stats>> getAllStats();
+
+*/
 }

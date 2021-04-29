@@ -12,7 +12,9 @@ import androidx.room.RoomDatabase;
 @Database(entities = {Teams.class}, version = 1)
 public abstract class TimeOutDatabase extends RoomDatabase {
 
-    public abstract TimeOutDao teamDao();
+    //arrayOf(Teams.class, Player.class, Stats.class, Games.class
+    public abstract TimeOutDao timeOutDao();
+   // public abstract PlayerDao playerDao();
 
     private static TimeOutDatabase instance; //singleton - database instance
 
@@ -21,7 +23,7 @@ public abstract class TimeOutDatabase extends RoomDatabase {
             synchronized (TimeOutDatabase.class){
                 if(instance == null){
                     instance = Room.databaseBuilder(context.getApplicationContext(),
-                            TimeOutDatabase.class,"team_database")
+                            TimeOutDatabase.class,"timeout_database")
                             .fallbackToDestructiveMigration()
                             .build();
                 }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import dk.au.mad21spring.appproject.group21.Database.Teams;
 
@@ -24,17 +25,18 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_teamlist);
 
         vm = new ViewModelProvider(this).get(TeamListViewModel.class);
-        vm.getTeams().observe(this, new Observer<ArrayList<Teams>>() {
+        vm.getTeams().observe(this, new Observer<List<Teams>>() {
             @Override
-            public void onChanged(ArrayList<Teams> list) {
+            public void onChanged(List<Teams> list) {
                 adapter.updateTeamList(list);
             }
         });
 
         setupUI();
+        vm.addTeams(); // adds all the teams from the API.
     }
 
     private void setupUI() {
