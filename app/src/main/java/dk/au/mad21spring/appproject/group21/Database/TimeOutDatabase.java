@@ -13,7 +13,7 @@ import dk.au.mad21spring.appproject.group21.Database.Dao.TimeOutDao;
 //This code is inspired from lesson 4 and the demo about Persistence
 //This class is a Room class, that implements the singleton pattern and creates the TeamDao class
 
-@Database(entities = {Teams.class, Player.class, Games.class}, version = 2, exportSchema = false)
+@Database(entities = {Team.class, Player.class, Games.class}, version = 2, exportSchema = false)
 public abstract class TimeOutDatabase extends RoomDatabase {
 
     public abstract TimeOutDao timeOutDao();

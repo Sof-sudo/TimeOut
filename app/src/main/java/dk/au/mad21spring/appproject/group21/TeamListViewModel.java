@@ -3,13 +3,11 @@ package dk.au.mad21spring.appproject.group21;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import dk.au.mad21spring.appproject.group21.Database.Teams;
+import dk.au.mad21spring.appproject.group21.Database.Team;
 
 public class TeamListViewModel extends ViewModel {
 
@@ -19,7 +17,7 @@ public class TeamListViewModel extends ViewModel {
         repository = Repository.getInstance(app);
     }
 
-    public LiveData<List<Teams>> getTeams() {
+    public LiveData<List<Team>> getTeams() {
 
         return repository.loadAllTeams();
 

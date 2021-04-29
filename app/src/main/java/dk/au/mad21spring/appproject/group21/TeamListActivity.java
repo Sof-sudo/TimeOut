@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import dk.au.mad21spring.appproject.group21.Database.Teams;
+import dk.au.mad21spring.appproject.group21.Database.Team;
 
 public class TeamListActivity extends AppCompatActivity implements TeamAdapter.ITeamItemClickedListener {
 
@@ -28,9 +27,9 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
         setContentView(R.layout.activity_teamlist);
 
         vm = new ViewModelProvider(this, new TeamListViewModelFactory(getApplication())).get(TeamListViewModel.class);
-        vm.getTeams().observe(this, new Observer<List<Teams>>() {
+        vm.getTeams().observe(this, new Observer<List<Team>>() {
             @Override
-            public void onChanged(List<Teams> list) {
+            public void onChanged(List<Team> list) {
                 adapter.updateTeamList(list);
             }
         });

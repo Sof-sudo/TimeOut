@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import dk.au.mad21spring.appproject.group21.Database.Teams;
+import dk.au.mad21spring.appproject.group21.Database.Team;
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder> {
 
@@ -23,14 +23,14 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
     }
 
     private ITeamItemClickedListener listener;
-    private List<Teams> TeamList;
+    private List<Team> TeamList;
 
     public TeamAdapter(ITeamItemClickedListener listener){
         this.listener = listener;
-        TeamList = new ArrayList<Teams>();
+        TeamList = new ArrayList<Team>();
     }
 
-    public void updateTeamList(List<Teams> lists){
+    public void updateTeamList(List<Team> lists){
         TeamList = lists;
         notifyDataSetChanged();
     }

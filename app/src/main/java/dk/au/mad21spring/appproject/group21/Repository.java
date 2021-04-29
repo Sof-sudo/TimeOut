@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import dk.au.mad21spring.appproject.group21.Database.Teams;
+import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Database.TimeOutDatabase;
 
 public class Repository {
@@ -36,12 +36,12 @@ public class Repository {
     }
 
 
-    public LiveData<List<Teams>> loadAllTeams(){
+    public LiveData<List<Team>> loadAllTeams(){
         return db.timeOutDao().getAllTeams();
     }
 
     //add a new team to the database asynch
-    public void addTeamAsynch(Teams team){
+    public void addTeamAsynch(Team team){
         executor.execute(new Runnable() {
             @Override
             public void run() {

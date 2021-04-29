@@ -1,7 +1,6 @@
 package dk.au.mad21spring.appproject.group21;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -11,9 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import dk.au.mad21spring.appproject.group21.Database.Teams;
+import dk.au.mad21spring.appproject.group21.Database.Team;
 
 public class TeamActivity extends AppCompatActivity {
 
@@ -88,7 +85,7 @@ public class TeamActivity extends AppCompatActivity {
     private void showGames()
     {}
 
-    private void updateUI(Teams team)
+    private void updateUI(Team team)
     {}
 
 }

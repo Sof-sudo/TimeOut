@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Teams {
+public class Team {
 
     @PrimaryKey
     private int teamID;
@@ -15,7 +15,7 @@ public class Teams {
     private String fullname;
     private String name;
 
-    public Teams(int teamID, String abbreviation, String city, String conference, String division, String fullname, String name){
+    public Team(int teamID, String abbreviation, String city, String conference, String division, String fullname, String name){
         this.teamID = teamID;
         this.abbreviation = abbreviation;
         this.city = city;
