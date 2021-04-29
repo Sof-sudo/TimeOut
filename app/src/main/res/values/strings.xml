@@ -5,4 +5,6 @@
     <string name="viewLocation">View Location</string>
     <string name="viewPlayers">View Players</string>
     <string name="viewLatestGames">View Latest Games</string>
+    <string name="btnBackPlayer">Back</string>
+    <string name="txtPlayers">Players:</string>
 </resources>

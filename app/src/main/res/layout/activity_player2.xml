@@ -11,10 +11,10 @@
         android:layout_width="142dp"
         android:layout_height="69dp"
         android:layout_marginTop="88dp"
-        android:text="Back"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:text="@string/btnBackPlayer"
+        app:layout_constraintEnd_toEndOf="@+id/txtPlayers"
+        app:layout_constraintStart_toStartOf="@+id/txtPlayers"
+        app:layout_constraintTop_toBottomOf="@+id/txtPlayers" />
 
     <ImageView
         android:id="@+id/imgLogoPlayer"
@@ -38,12 +38,21 @@
         app:layout_constraintTop_toBottomOf="@+id/imgLogoPlayer" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtPlayers"
         android:layout_width="250dp"
         android:layout_height="198dp"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:layout_marginTop="16dp"
+        android:text="txtPlayers"
         app:layout_constraintEnd_toEndOf="@+id/txtNamePlayer"
         app:layout_constraintStart_toStartOf="@+id/txtNamePlayer"
+        app:layout_constraintTop_toBottomOf="@+id/txtPlayers1" />
+
+    <TextView
+        android:id="@+id/txtPlayers1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/txtPlayers"
+        app:layout_constraintStart_toStartOf="@+id/txtPlayers"
         app:layout_constraintTop_toBottomOf="@+id/txtNamePlayer" />
 </androidx.constraintlayout.widget.ConstraintLayout>
