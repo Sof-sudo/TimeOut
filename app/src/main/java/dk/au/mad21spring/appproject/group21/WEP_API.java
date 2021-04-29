@@ -82,10 +82,10 @@ public class WEP_API {
         Gson gson = new GsonBuilder().create();
         BasketBallTeamsAPI teamData = gson.fromJson(json, BasketBallTeamsAPI.class);
         if (teamData != null) {
-            Team teams = new Team(teamData.getId(), teamData.getAbbreviation(), teamData.getCity(),
+            Team team = new Team(teamData.getId(), teamData.getAbbreviation(), teamData.getCity(),
                     teamData.getConference(), teamData.getDivision(), teamData.getFullName(), teamData.getName());
 
-            repository.addTeamAsynch(teams);
+            repository.addTeamAsynch(team);
         }
 
 

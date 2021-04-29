@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
+import dk.au.mad21spring.appproject.group21.Database.Player;
+
 public class PlayerViewModel extends ViewModel {
 
     private Repository repository;
@@ -15,7 +17,7 @@ public class PlayerViewModel extends ViewModel {
     repository = Repository.getInstance(app);
     }
 
-//    public LiveData<List<Players>> getAll() {
+//    public LiveData<List<Player>> getAll() {
 //        return repository.LoadData();
 //    }
 
