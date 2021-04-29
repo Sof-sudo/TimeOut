@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.List;
@@ -47,6 +48,9 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
 
     @Override
     public void onTeamClicked(int index) {
+        Intent intent = new Intent(this,TeamActivity.class);
+        intent.putExtra("INDEX",index);
+        startActivity(intent);
 
     }
 }
