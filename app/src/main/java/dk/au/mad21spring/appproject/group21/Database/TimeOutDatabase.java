@@ -16,7 +16,7 @@ import dk.au.mad21spring.appproject.group21.Database.Dao.TeamDao;
 @Database(entities = {Team.class, Player.class, Games.class}, version = 2, exportSchema = false)
 public abstract class TimeOutDatabase extends RoomDatabase {
 
-    public abstract TeamDao timeOutDao();
+    public abstract TeamDao teamDao();
     public abstract PlayerDao playerDao();
     public abstract GamesDao gamesDao();
 

@@ -1,6 +1,7 @@
 package dk.au.mad21spring.appproject.group21;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -22,7 +23,7 @@ public class TeamActivity extends AppCompatActivity {
     private Button games;
 
     //other variables
-    private String team;
+    private String teamName;
 
     //OBS MOVE TO CONSTANTS
     public static final String TEAM = "Team";
@@ -36,16 +37,16 @@ public class TeamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_team);
 
         Intent data = getIntent();
-        team = data.getStringExtra(TEAM);
+        teamName = data.getStringExtra(TEAM);
 
         viewModel = new ViewModelProvider(this).get(TeamViewModel.class);
-//        viewModel.getTeam(team).observe(this, new Observer<Team>() {
-//            @Override
-//            public void onChanged(Team team)
-//            {
-//                updateUI(team);
-//            }
-//        });
+        viewModel.getTeam(teamName).observe(this, new Observer<Team>() {
+            @Override
+            public void onChanged(Team team)
+            {
+                updateUI(team);
+            }
+        });
 
         logo = findViewById(R.id.imgLogo);
         name = findViewById(R.id.txtName);

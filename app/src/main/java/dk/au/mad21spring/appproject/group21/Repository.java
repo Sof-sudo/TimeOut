@@ -5,8 +5,11 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Database.TimeOutDatabase;
@@ -37,7 +40,7 @@ public class Repository {
 
 
     public LiveData<List<Team>> loadAllTeams(){
-        return db.timeOutDao().getAllTeams();
+        return db.teamDao().getAllTeams();
     }
 
     //add a new team to the database asynch
@@ -45,11 +48,37 @@ public class Repository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                db.timeOutDao().addTeam(team);
+                db.teamDao().addTeam(team);
             }
         });
     }
 
+    //find a team in the database by the name
+    public Team getTeamAsync(String name)
+    {
+        Future<Team> team = executor.submit(new Callable<Team>() {
+            @Override
+            public Team call()
+            {
+                return db.teamDao().findTeam(name);
+            }
+        });
+
+        try
+        {
+            return team.get();
+        }
+        catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
 ///////////////// Get data from API /////////////////////////////////
 
