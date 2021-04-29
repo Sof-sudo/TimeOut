@@ -21,6 +21,7 @@ public class WEP_API {
 
     private ExecutorService executor;
     private Application app;
+    private Repository repository;
 
 
     public WEP_API(Application app) {
@@ -32,12 +33,14 @@ public class WEP_API {
     private RequestQueue requestQueue;
 
 
-    private void addTeam(int teamNumber) {
-        String base = "https://www.balldontlie.io/api/v1/teams/" + teamNumber;
+    public void getAllTeams() {
+        String base = "https://www.balldontlie.io/api/v1/teams/";
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                sendRequest(base, false);
+                for(int i=1; i<30; i++){ // there is 30 teams
+                    sendRequest(base + i, false);
+                }
             }
         });
     }
@@ -77,12 +80,10 @@ public class WEP_API {
         Gson gson = new GsonBuilder().create();
         BasketBallTeamsAPI teamData = gson.fromJson(json, BasketBallTeamsAPI.class);
         if (teamData != null) {
-            //Team teams = new Team("teamName","CityName");
             Teams teams = new Teams(teamData.getId(), teamData.getAbbreviation(), teamData.getCity(),
                     teamData.getConference(), teamData.getDivision(), teamData.getFullName(), teamData.getName());
 
-            // repository addteam ??
-            // database.TimeOutDAO.AddTeam(teams)
+            repository.addTeamAsynch(teams);
         }
 
 
