@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import dk.au.mad21spring.appproject.group21.Database.Player;
+
 public class PlayerActivity extends AppCompatActivity {
 
 public static final String INDEX = "index";
@@ -27,6 +29,7 @@ public static final String INDEX = "index";
 
     //ViewModel
     private PlayerViewModel playerViewModel;
+    private Player player;
 
 
     @Override
@@ -39,9 +42,15 @@ public static final String INDEX = "index";
 
         // Oprettelse af ViewModel
         playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
-//        playerViewModel.getAll().observe(this, new Observer<List<Players>>() {
+//        playerViewModel.getAll().observe(this, new Observer<List<Player>>() {
 //            @Override
-//            public void onChanged(List<Players> players) {
+//            public void onChanged(List<Player> players) {
+//
+//            }
+//        });
+//        playerViewModel.getAll().observe(this, new Observer<List<Player>>() {
+//            @Override
+//            public void onChanged(List<Player> players) {
 //                players.get(uid);
 //                updateUI();
 //            }
