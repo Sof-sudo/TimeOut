@@ -1,10 +1,12 @@
 package dk.au.mad21spring.appproject.group21.Database;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class Stats {
 
+    @PrimaryKey
     private int statsID;
     private int ast;
     private int blk;
