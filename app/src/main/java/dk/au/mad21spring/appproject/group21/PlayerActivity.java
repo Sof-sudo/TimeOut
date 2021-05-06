@@ -27,6 +27,8 @@ public static final String INDEX = "index";
     private TextView txtPlayers;
     private TextView txtTeam;
 
+    private String teamName;
+
     //ViewModel
     private PlayerViewModel playerViewModel;
     private Player player;
@@ -38,14 +40,14 @@ public static final String INDEX = "index";
         setContentView(R.layout.activity_player2);
 
         Intent data = getIntent();
-        int uid = data.getIntExtra(INDEX, 0);
+        String teamName = data.getStringExtra(INDEX);
 
         // Oprettelse af ViewModel
         playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
         playerViewModel.getAll().observe(this, new Observer<List<Player>>() {
             @Override
             public void onChanged(List<Player> players) {
-                players.get(uid);
+                //players.get(teamName);
                 updateUI();
             }
         });
