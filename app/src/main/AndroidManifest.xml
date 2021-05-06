@@ -36,7 +36,6 @@
             android:label="@string/title_activity_location"></activity>
         <activity android:name=".Activities.PlayerActivity" />
         <activity android:name=".Activities.LatestGamesActivity"></activity>
-        <activity android:name=".Activities.PlayerActivity" />
         <activity android:name=".Activities.TeamActivity" />
         <activity android:name=".Activities.TeamListActivity">
             <intent-filter>

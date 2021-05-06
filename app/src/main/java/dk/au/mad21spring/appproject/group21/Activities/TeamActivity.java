@@ -30,9 +30,11 @@ public class TeamActivity extends AppCompatActivity {
 
     //other variables
     private String teamName;
+    private String city;
 
     //OBS MOVE TO CONSTANTS
     public static final String TEAM = "TEAM";
+    public static final String CITY = "CITY";
 
     //viewmodel
     private TeamViewModel viewModel;
@@ -50,6 +52,7 @@ public class TeamActivity extends AppCompatActivity {
             @Override
             public void onChanged(Team team)
             {
+                city = team.getCity();
                 updateUI(team);
             }
         });
@@ -93,7 +96,7 @@ public class TeamActivity extends AppCompatActivity {
     private void showLocation()
     {
         Intent intent = new Intent(this, LocationActivity.class);
-        intent.putExtra(TEAM,teamName); //Bynavn
+        intent.putExtra(CITY,city); //Bynavn
         startActivity(intent);
     }
 

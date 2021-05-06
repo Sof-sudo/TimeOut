@@ -14,6 +14,7 @@ import java.util.concurrent.Future;
 
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Database.TimeOutDatabase;
+import dk.au.mad21spring.appproject.group21.Teams_API.Coord;
 
 public class Repository {
 
@@ -41,6 +42,7 @@ public class Repository {
         return instance;
     }
 
+//    public String
 
     public LiveData<List<Team>> loadAllTeams(){
         if (teamlist == null){
@@ -91,5 +93,9 @@ public class Repository {
 
     public void addAllTeams(){
         team_api.getAllTeams();
+    }
+
+    public Coord getLongLat(String cityName) {
+        return team_api.getLongLat(cityName);
     }
 }
