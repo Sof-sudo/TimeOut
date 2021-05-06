@@ -8,5 +8,5 @@
     <string name="btnBackPlayer">Back</string>
     <string name="txtPlayers">Players:</string>
     <string name="Search">Search</string>
-    <string name="SearchField">SearchField</string>
+    <string name="SearchField">Search here</string>
 </resources>

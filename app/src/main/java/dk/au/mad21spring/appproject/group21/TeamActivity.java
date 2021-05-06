@@ -23,6 +23,7 @@ public class TeamActivity extends AppCompatActivity {
     private Button location;
     private Button players;
     private Button games;
+    private Button back;
 
     //other variables
     private String teamName;
@@ -55,6 +56,7 @@ public class TeamActivity extends AppCompatActivity {
         location = findViewById(R.id.btnLocation);
         players = findViewById(R.id.btnPlayers);
         games = findViewById(R.id.btnGames);
+        back = findViewById(R.id.btnBack);
 
         location.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,21 +78,37 @@ public class TeamActivity extends AppCompatActivity {
                 showGames();
             }
         });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                back();
+            }
+        });
     }
 
     private void showLocation()
     {}
 
     private void showPlayers()
-    {}
+    {
+        Intent intent = new Intent(this, PlayerActivity.class);
+        intent.putExtra(TEAM,teamName);
+        startActivity(intent);
+    }
 
     private void showGames()
     {}
 
+    private void back()
+    {
+        finish();
+    }
+
     private void updateUI(Team team)
     {
         Glide.with(this).load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+team.getAbbreviation().toLowerCase()+".png").into(logo);
-        name.setText(team.getName());
+        name.setText(team.getFullname());
     }
 
 }
