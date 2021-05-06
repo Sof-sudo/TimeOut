@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TimeOut</string>
+    <string name="btnBackPlayer">Tilbage</string>
+    <string name="txtPlayers">Spillere:</string>
+    <string name="Search">Søg</string>
+    <string name="SearchField">Søg her</string>
+    <string name="title_activity_location">Kort</string>
+    <string name="viewPlayers">Se spillere</string>
+    <string name="viewLocation">Se lokation</string>
+    <string name="txtTeamName">"Holdnavn "</string>
+    <string name="viewLatestGames">Se sidst spillede kampe</string>
+</resources>
