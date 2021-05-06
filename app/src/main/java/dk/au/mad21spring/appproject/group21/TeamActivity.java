@@ -88,7 +88,11 @@ public class TeamActivity extends AppCompatActivity {
     }
 
     private void showLocation()
-    {}
+    {
+        Intent intent = new Intent(this, LocationActivity.class);
+        intent.putExtra(TEAM,teamName); //Bynavn
+        startActivity(intent);
+    }
 
     private void showPlayers()
     {
@@ -98,7 +102,11 @@ public class TeamActivity extends AppCompatActivity {
     }
 
     private void showGames()
-    {}
+    {
+        Intent intent = new Intent(this, LatestGamesActivity.class);
+        intent.putExtra(TEAM,teamName);
+        startActivity(intent);
+    }
 
     private void back()
     {
