@@ -1,4 +1,4 @@
-package dk.au.mad21spring.appproject.group21;
+package dk.au.mad21spring.appproject.group21.Activities;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -10,6 +10,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import dk.au.mad21spring.appproject.group21.R;
 
 public class LocationActivity extends FragmentActivity implements OnMapReadyCallback {
 

@@ -32,13 +32,13 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".LocationActivity"
+            android:name=".Activities.LocationActivity"
             android:label="@string/title_activity_location"></activity>
-        <activity android:name=".PlayerActivity" />
-        <activity android:name=".LatestGamesActivity"></activity>
-        <activity android:name=".PlayerActivity" />
-        <activity android:name=".TeamActivity" />
-        <activity android:name=".TeamListActivity">
+        <activity android:name=".Activities.PlayerActivity" />
+        <activity android:name=".Activities.LatestGamesActivity"></activity>
+        <activity android:name=".Activities.PlayerActivity" />
+        <activity android:name=".Activities.TeamActivity" />
+        <activity android:name=".Activities.TeamListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

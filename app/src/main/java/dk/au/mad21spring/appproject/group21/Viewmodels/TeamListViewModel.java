@@ -1,4 +1,4 @@
-package dk.au.mad21spring.appproject.group21;
+package dk.au.mad21spring.appproject.group21.Viewmodels;
 
 import android.app.Application;
 
@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 import java.util.List;
 
 import dk.au.mad21spring.appproject.group21.Database.Team;
+import dk.au.mad21spring.appproject.group21.Repository;
 
 public class TeamListViewModel extends ViewModel {
 

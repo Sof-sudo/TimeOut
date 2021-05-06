@@ -1,10 +1,12 @@
-package dk.au.mad21spring.appproject.group21;
+package dk.au.mad21spring.appproject.group21.Factories;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+
+import dk.au.mad21spring.appproject.group21.Viewmodels.TeamViewModel;
 
 public class TeamViewModelFactory implements ViewModelProvider.Factory {
 

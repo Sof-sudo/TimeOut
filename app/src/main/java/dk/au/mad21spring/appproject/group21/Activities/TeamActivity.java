@@ -1,4 +1,4 @@
-package dk.au.mad21spring.appproject.group21;
+package dk.au.mad21spring.appproject.group21.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -14,6 +14,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import dk.au.mad21spring.appproject.group21.Database.Team;
+import dk.au.mad21spring.appproject.group21.Factories.TeamViewModelFactory;
+import dk.au.mad21spring.appproject.group21.R;
+import dk.au.mad21spring.appproject.group21.Viewmodels.TeamViewModel;
 
 public class TeamActivity extends AppCompatActivity {
 

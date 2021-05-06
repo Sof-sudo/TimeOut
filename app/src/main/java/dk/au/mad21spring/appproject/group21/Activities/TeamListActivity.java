@@ -1,4 +1,4 @@
-package dk.au.mad21spring.appproject.group21;
+package dk.au.mad21spring.appproject.group21.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -14,7 +14,12 @@ import android.widget.EditText;
 
 import java.util.List;
 
+import dk.au.mad21spring.appproject.group21.Activities.TeamActivity;
 import dk.au.mad21spring.appproject.group21.Database.Team;
+import dk.au.mad21spring.appproject.group21.Factories.TeamListViewModelFactory;
+import dk.au.mad21spring.appproject.group21.R;
+import dk.au.mad21spring.appproject.group21.TeamAdapter;
+import dk.au.mad21spring.appproject.group21.Viewmodels.TeamListViewModel;
 
 public class TeamListActivity extends AppCompatActivity implements TeamAdapter.ITeamItemClickedListener {
 
@@ -61,7 +66,7 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
         Team team = vm.searchForTeam(teamSearch);
 
         if(team!=null){
-            Intent intent = new Intent(this,TeamActivity.class);
+            Intent intent = new Intent(this, TeamActivity.class);
             intent.putExtra(TEAM,team.getName());
             startActivity(intent);
         } else {

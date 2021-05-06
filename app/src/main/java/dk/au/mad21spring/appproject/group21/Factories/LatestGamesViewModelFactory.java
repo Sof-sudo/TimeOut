@@ -1,11 +1,12 @@
-package dk.au.mad21spring.appproject.group21;
+package dk.au.mad21spring.appproject.group21.Factories;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
+
+import dk.au.mad21spring.appproject.group21.Viewmodels.LatestGamesViewModel;
 
 public class LatestGamesViewModelFactory implements ViewModelProvider.Factory {
 
