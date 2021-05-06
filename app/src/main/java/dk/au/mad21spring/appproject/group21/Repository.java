@@ -18,7 +18,7 @@ import dk.au.mad21spring.appproject.group21.Database.TimeOutDatabase;
 public class Repository {
 
     private TimeOutDatabase db;
-    private WEP_API wep_api;
+    private Team_API team_api;
     private ExecutorService executor;
     private static Repository instance;
     private Application app;
@@ -29,7 +29,7 @@ public class Repository {
         db = TimeOutDatabase.getDatabase(app.getApplicationContext());
         executor = Executors.newSingleThreadExecutor();
         this.app = app;
-        wep_api = new WEP_API(app, this);
+        team_api = new Team_API(app, this);
         teamlist = db.teamDao().getAllTeams();
     }
 
@@ -90,6 +90,6 @@ public class Repository {
 ///////////////// Get data from API /////////////////////////////////
 
     public void addAllTeams(){
-        wep_api.getAllTeams();
+        team_api.getAllTeams();
     }
 }
