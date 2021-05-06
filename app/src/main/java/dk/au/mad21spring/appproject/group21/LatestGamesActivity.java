@@ -63,7 +63,6 @@ setupUI();
                 finish();
             }
         });
-
     }
 
     private void updateUI(Team team) {
