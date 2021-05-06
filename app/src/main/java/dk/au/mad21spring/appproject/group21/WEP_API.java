@@ -34,7 +34,7 @@ public class WEP_API {
     private RequestQueue requestQueue;
 
 
-    public void getAllTeams() {
+    public void getAllTeams() { //with inspiration from RickandMortyDemo.
         String base = "https://www.balldontlie.io/api/v1/teams/";
         executor.execute(new Runnable() {
             @Override

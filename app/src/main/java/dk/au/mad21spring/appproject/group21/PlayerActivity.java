@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import dk.au.mad21spring.appproject.group21.Database.Player;
+import dk.au.mad21spring.appproject.group21.Database.Team;
 
 public class PlayerActivity extends AppCompatActivity {
 
@@ -27,11 +28,15 @@ public static final String INDEX = "index";
     private TextView txtPlayers;
     private TextView txtTeam;
 
-    private String teamName;
-
     //ViewModel
     private PlayerViewModel playerViewModel;
     private Player player;
+
+    //other variables
+    private String teamName;
+
+    //OBS MOVE TO CONSTANTS
+    public static final String TEAM = "TEAM";
 
 
     @Override
@@ -40,23 +45,25 @@ public static final String INDEX = "index";
         setContentView(R.layout.activity_player2);
 
         Intent data = getIntent();
-        String teamName = data.getStringExtra(INDEX);
+        teamName = data.getStringExtra(TEAM);
 
         // Oprettelse af ViewModel
         playerViewModel = new ViewModelProvider(this, new PlayerViewModelFactory(getApplication())).get(PlayerViewModel.class);
-        playerViewModel.getAll().observe(this, new Observer<List<Player>>() {
+        playerViewModel.getTeam(teamName).observe(this, new Observer<Team>() {
             @Override
-            public void onChanged(List<Player> players) {
-                //players.get(teamName);
-                updateUI();
+            public void onChanged(Team team) {
+                updateUI(team);
             }
         });
 
+        setupUI();
+    }
 
-
+    private void setupUI() {
         btnBack = findViewById(R.id.BtnBackPlayer);
         txtPlayers = findViewById(R.id.txtPlayers);
         txtTeam = findViewById(R.id.txtNamePlayer);
+        imgLogo = findViewById(R.id.imgLogoPlayer);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,26 +71,13 @@ public static final String INDEX = "index";
                 finish();
             }
         });
-
-
     }
 
-    private void updateUI() {
-
-      //  String base = "https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+TeamList.get(position).getAbbreviation().toLowerCase()+".png").into(holder.imgTeamLogo);
-//        Glide.with(holder.imgTeamLogo.getContext())
-//                .load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+TeamList.get(position)
-//                        .getAbbreviation().toLowerCase()+".png").into(holder.imgTeamLogo);
-//        holder.txtTeamName.setText(TeamList.get(position).getFullname());
-
-        txtTeam.setText("Team");
-
-        // hvordan får vi lige flere spillere ind??
-        txtPlayers.setText(player.getFirstname()+player.getLastname()+" Position: " +player.getPosition() );
-
-
-
+    private void updateUI(Team team)
+    {
+        Glide.with(this).load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+team.getAbbreviation()
+                .toLowerCase()+".png").into(imgLogo);
+        txtTeam.setText(team.getFullname());
+        txtPlayers.setText("Players");
     }
-
-
 }
