@@ -43,7 +43,7 @@ public static final String INDEX = "index";
         String teamName = data.getStringExtra(INDEX);
 
         // Oprettelse af ViewModel
-        playerViewModel = new ViewModelProvider(this).get(PlayerViewModel.class);
+        playerViewModel = new ViewModelProvider(this, new PlayerViewModelFactory(getApplication())).get(PlayerViewModel.class);
         playerViewModel.getAll().observe(this, new Observer<List<Player>>() {
             @Override
             public void onChanged(List<Player> players) {
