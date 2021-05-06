@@ -27,4 +27,7 @@ public class TeamListViewModel extends ViewModel {
         repository.addAllTeams();
     }
 
+    public Team searchForTeam(String team){
+        return repository.getTeamAsync(team);
+    }
 }

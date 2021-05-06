@@ -8,15 +8,15 @@ import androidx.room.RoomDatabase;
 
 import dk.au.mad21spring.appproject.group21.Database.Dao.GamesDao;
 import dk.au.mad21spring.appproject.group21.Database.Dao.PlayerDao;
-import dk.au.mad21spring.appproject.group21.Database.Dao.TimeOutDao;
+import dk.au.mad21spring.appproject.group21.Database.Dao.TeamDao;
 
 //This code is inspired from lesson 4 and the demo about Persistence
 //This class is a Room class, that implements the singleton pattern and creates the TeamDao class
 
-@Database(entities = {Team.class, Player.class, Games.class}, version = 2, exportSchema = false)
+@Database(entities = {Team.class, Player.class, Games.class}, version = 3, exportSchema = false)
 public abstract class TimeOutDatabase extends RoomDatabase {
 
-    public abstract TimeOutDao timeOutDao();
+    public abstract TeamDao teamDao();
     public abstract PlayerDao playerDao();
     public abstract GamesDao gamesDao();
 

@@ -12,9 +12,8 @@ import java.util.List;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 
 @Dao
-public interface TimeOutDao {
+public interface TeamDao {
 
-    //TEAMS
     @Query("SELECT * FROM Team")
     LiveData<List<Team>> getAllTeams();
 

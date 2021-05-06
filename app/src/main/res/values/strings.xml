@@ -7,4 +7,6 @@
     <string name="viewLatestGames">View Latest Games</string>
     <string name="btnBackPlayer">Back</string>
     <string name="txtPlayers">Players:</string>
+    <string name="Search">Search</string>
+    <string name="SearchField">Search here</string>
 </resources>
