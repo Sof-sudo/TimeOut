@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Database.TimeOutDatabase;
 import dk.au.mad21spring.appproject.group21.Teams_API.Coord;
@@ -89,6 +90,7 @@ public class Repository {
         return null;
     }
 
+
 ///////////////// Get data from API /////////////////////////////////
 
     public void addAllTeams(){
@@ -98,4 +100,5 @@ public class Repository {
     public Coord getLongLat(String cityName) {
         return team_api.getLongLat(cityName);
     }
+
 }
