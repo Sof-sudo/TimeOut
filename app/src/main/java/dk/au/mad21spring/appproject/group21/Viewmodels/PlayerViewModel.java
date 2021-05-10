@@ -31,4 +31,8 @@ public class PlayerViewModel extends ViewModel {
         team.setValue(repository.getTeamAsync(name));
         return team;
     }
+
+    public void getPlayer(String name){
+        repository.loadPlayer(name);
+    }
 }

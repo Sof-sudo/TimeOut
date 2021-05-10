@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,10 +25,11 @@ public class PlayerActivity extends AppCompatActivity {
 public static final String INDEX = "index";
 
     // widgets
-    private Button btnBack;
+    private Button btnBack, btnSearch;
     private ImageView imgLogo;
     private TextView txtPlayers;
     private TextView txtTeam;
+    private EditText edtSearchPlayer;
 
     //ViewModel
     private PlayerViewModel playerViewModel;
@@ -57,19 +59,30 @@ public static final String INDEX = "index";
             }
         });
 
+
+
         setupUI();
     }
 
     private void setupUI() {
         btnBack = findViewById(R.id.BtnBackPlayer);
-        txtPlayers = findViewById(R.id.txtPlayers);
+        //txtPlayers = findViewById(R.id.txtPlayers);
         txtTeam = findViewById(R.id.txtNamePlayer);
         imgLogo = findViewById(R.id.imgLogoPlayer);
+        btnSearch = findViewById(R.id.btnSearchPlayer);
+        edtSearchPlayer = findViewById(R.id.edtSearchPlayer);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerViewModel.getPlayer(edtSearchPlayer.getText().toString());
             }
         });
     }
@@ -79,6 +92,5 @@ public static final String INDEX = "index";
         Glide.with(this).load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+team.getAbbreviation()
                 .toLowerCase()+".png").into(imgLogo);
         txtTeam.setText(team.getFullname());
-        txtPlayers.setText("Players");
     }
 }

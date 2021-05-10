@@ -13,8 +13,7 @@
         android:layout_marginBottom="32dp"
         android:text="@string/btnBackPlayer"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/txtPlayers"
-        app:layout_constraintStart_toStartOf="@+id/txtPlayers" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imgLogoPlayer"
@@ -37,22 +36,27 @@
         app:layout_constraintStart_toStartOf="@+id/imgLogoPlayer"
         app:layout_constraintTop_toBottomOf="@+id/imgLogoPlayer" />
 
-    <TextView
-        android:id="@+id/txtPlayers"
-        android:layout_width="250dp"
-        android:layout_height="198dp"
-        android:layout_marginTop="16dp"
-        android:text="txtPlayers"
-        app:layout_constraintEnd_toEndOf="@+id/txtNamePlayer"
-        app:layout_constraintStart_toStartOf="@+id/txtNamePlayer"
-        app:layout_constraintTop_toBottomOf="@+id/txtPlayers1" />
-
-    <TextView
-        android:id="@+id/txtPlayers1"
+    <Button
+        android:id="@+id/btnSearchPlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/txtPlayers"
-        app:layout_constraintStart_toStartOf="@+id/txtPlayers"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/edtSearchPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNamePlayer" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

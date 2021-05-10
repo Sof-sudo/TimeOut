@@ -23,4 +23,7 @@ public interface PlayerDao {
 
     @Update
     void updatePlayer(Player player);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void addPlayer(Player player);
 }

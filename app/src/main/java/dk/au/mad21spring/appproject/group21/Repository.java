@@ -21,6 +21,7 @@ public class Repository {
 
     private TimeOutDatabase db;
     private Team_API team_api;
+    private Player_API player_api;
     private ExecutorService executor;
     private static Repository instance;
     private Application app;
@@ -32,6 +33,7 @@ public class Repository {
         executor = Executors.newSingleThreadExecutor();
         this.app = app;
         team_api = new Team_API(app, this);
+        player_api = new Player_API(app, this);
         teamlist = db.teamDao().getAllTeams();
     }
 
@@ -90,6 +92,15 @@ public class Repository {
         return null;
     }
 
+    public void addPlayerAsynch(Player player) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                db.playerDao().addPlayer(player);
+            }
+        });
+    }
+
 
 ///////////////// Get data from API /////////////////////////////////
 
@@ -100,5 +111,10 @@ public class Repository {
     public Coord getLongLat(String cityName) {
         return team_api.getLongLat(cityName);
     }
+
+    public void loadPlayer(String name){
+        player_api.getPlayer(name);
+    }
+
 
 }
