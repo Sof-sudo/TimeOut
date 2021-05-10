@@ -10,4 +10,6 @@
     <string name="Search">Search</string>
     <string name="SearchField">Search here</string>
     <string name="title_activity_location">Map</string>
+    <string name="edtPlayerName">Player name</string>
+    <string name="btnSearchPlayer">Search</string>
 </resources>
