@@ -149,7 +149,7 @@ return teamlist.getValue().get(value);
         map_api.getLongLat(cityName, callback);
     }
 
-    public void loadPlayer(String name){
-        player_api.getPlayer(name);
+    public void loadPlayer(String name, VolleyCallback callback){
+        player_api.getPlayer(name, callback);
     }
 }

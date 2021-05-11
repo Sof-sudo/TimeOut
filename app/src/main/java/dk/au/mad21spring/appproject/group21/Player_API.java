@@ -35,25 +35,27 @@ public class Player_API {
     private RequestQueue requestQueue;
 
 
-    public void getPlayer(String name) { //with inspiration from RickandMortyDemo.
+    public void getPlayer(String name, VolleyCallback callback) {
         String base = "https://www.balldontlie.io/api/v1/players?search="+name;
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                sendRequest(base, false);
+                sendRequest(base, false, callback);
             }
         });
     }
 
 
-    private void sendRequest(String url, boolean update) {
+    private void sendRequest(String url, boolean update, VolleyCallback callback) {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(app);
         }
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                parseJson(response, update);
+                Player player = parseJson(response, update);
+                callback.onSuccesPlayer(player);
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -64,15 +66,17 @@ public class Player_API {
     }
 
 
-    private void parseJson(String json, boolean update) {
+    private Player parseJson(String json, boolean update) {
         Gson gson = new GsonBuilder().create();
         BasketballPlayerAPI playerData = gson.fromJson(json, BasketballPlayerAPI.class);
+        Player player = null;
         if (playerData != null) {
-            Player player = new Player(playerData.getData().get(0).getId(),playerData.getData().get(0).getFirstName(), playerData.getData().get(0).getLastName(),
+            player = new Player(playerData.getData().get(0).getId(),playerData.getData().get(0).getFirstName(), playerData.getData().get(0).getLastName(),
                     playerData.getData().get(0).getPosition(),playerData.getData().get(0).getHeightFeet(),playerData.getData().get(0).getHeightInches(),
                     playerData.getData().get(0).getWeightPounds());
 
             repository.addPlayerAsynch(player);
         }
+        return player;
     }
 }

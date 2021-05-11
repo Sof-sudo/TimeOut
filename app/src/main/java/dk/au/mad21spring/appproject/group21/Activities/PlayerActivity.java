@@ -19,8 +19,10 @@ import java.util.List;
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Factories.PlayerViewModelFactory;
+import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.Viewmodels.PlayerViewModel;
+import dk.au.mad21spring.appproject.group21.VolleyCallback;
 
 public class PlayerActivity extends AppCompatActivity {
 
@@ -39,6 +41,7 @@ public static final String INDEX = "index";
 
     //other variables
     private String teamName;
+    private String name;
 
     //OBS MOVE TO CONSTANTS
     public static final String TEAM = "TEAM";
@@ -79,10 +82,34 @@ public static final String INDEX = "index";
             }
         });
 
+        VolleyCallback callback = new VolleyCallback() {
+            @Override
+            public void onSucces(Coord result) {
+
+            }
+
+            @Override
+            public void onError(Coord result) {
+
+            }
+
+            @Override
+            public void onSuccesPlayer(Player result) {
+                name = result.getFirstname();
+
+            }
+
+            @Override
+            public void onErrorPlayer(Player result) {
+
+            }
+        };
+
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playerViewModel.getPlayer(edtSearchPlayer.getText().toString());
+                playerViewModel.getPlayer(edtSearchPlayer.getText().toString(), callback);
+                txtPlayers.setText(name);
             }
         });
     }
@@ -93,4 +120,6 @@ public static final String INDEX = "index";
                 .toLowerCase()+".png").into(imgLogo);
         txtTeam.setText(team.getFullname());
     }
+
+
 }

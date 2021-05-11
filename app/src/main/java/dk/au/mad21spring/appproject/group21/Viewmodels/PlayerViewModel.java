@@ -11,6 +11,7 @@ import java.util.List;
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Repository;
+import dk.au.mad21spring.appproject.group21.VolleyCallback;
 
 public class PlayerViewModel extends ViewModel {
 
@@ -33,7 +34,7 @@ public class PlayerViewModel extends ViewModel {
         return team;
     }
 
-    public void getPlayer(String name){
-        repository.loadPlayer(name);
+    public void getPlayer(String name, VolleyCallback callback){
+        repository.loadPlayer(name, callback);
     }
 }
