@@ -12,4 +12,7 @@
     <string name="title_activity_location">Map</string>
     <string name="edtPlayerName">Player name</string>
     <string name="btnSearchPlayer">Search</string>
+    <string name="txtPlayerInfo">Player info</string>
+    <string name="txtNameStatic">Name</string>
+    <string name="txtPlayerPositionStatic">Position</string>
 </resources>

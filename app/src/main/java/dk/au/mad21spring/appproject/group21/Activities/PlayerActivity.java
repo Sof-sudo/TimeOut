@@ -41,7 +41,6 @@ public static final String INDEX = "index";
 
     //other variables
     private String teamName;
-    private String name;
 
     //OBS MOVE TO CONSTANTS
     public static final String TEAM = "TEAM";
@@ -97,9 +96,7 @@ public static final String INDEX = "index";
 
                 @Override
                 public void onSuccesPlayer(Player result) {
-                    name = result.getFirstname();
-                    txtPlayers.setText(name);
-                    //Showstuff()
+                    showPlayerData(result);
                 }
 
                 @Override
@@ -111,7 +108,6 @@ public static final String INDEX = "index";
             @Override
             public void onClick(View v) {
                 playerViewModel.getPlayer(edtSearchPlayer.getText().toString(), callback);
-//
             }
         });
     }
@@ -121,6 +117,15 @@ public static final String INDEX = "index";
         Glide.with(this).load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+team.getAbbreviation()
                 .toLowerCase()+".png").into(imgLogo);
         txtTeam.setText(team.getFullname());
+    }
+
+    private void showPlayerData(Player result){
+        String firstname = result.getFirstname();
+        String lastname = result.getLastname();
+        txtPlayers.setText(firstname+" "+lastname);
+        String position = result.getPosition();
+
+
     }
 
 
