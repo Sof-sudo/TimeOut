@@ -58,7 +58,6 @@ public class Player_API {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
             }
         });
         requestQueue.add(stringRequest);

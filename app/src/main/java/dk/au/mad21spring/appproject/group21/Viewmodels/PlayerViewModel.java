@@ -16,6 +16,7 @@ public class PlayerViewModel extends ViewModel {
 
     private Repository repository;
     private MutableLiveData<Team> team;
+    private MutableLiveData<Player> player;
 
     public PlayerViewModel(Application app) {
     repository = Repository.getInstance(app);
@@ -28,7 +29,7 @@ public class PlayerViewModel extends ViewModel {
             team = new MutableLiveData<Team>();
         }
 
-        team.setValue(repository.getTeamAsync(name));
+        team.setValue(repository.getTeamInDatabase(name));
         return team;
     }
 

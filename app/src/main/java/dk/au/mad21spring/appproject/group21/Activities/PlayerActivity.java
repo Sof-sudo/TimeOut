@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.List;
+
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Factories.PlayerViewModelFactory;
@@ -58,8 +60,6 @@ public static final String INDEX = "index";
                 updateUI(team);
             }
         });
-
-
 
         setupUI();
     }
