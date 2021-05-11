@@ -15,12 +15,13 @@ import java.util.concurrent.Future;
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Database.TimeOutDatabase;
-import dk.au.mad21spring.appproject.group21.Teams_API.Coord;
+import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 
 public class Repository {
 
     private TimeOutDatabase db;
     private Team_API team_api;
+    private Map_API map_api;
     private Player_API player_api;
     private ExecutorService executor;
     private static Repository instance;
@@ -33,6 +34,7 @@ public class Repository {
         executor = Executors.newSingleThreadExecutor();
         this.app = app;
         team_api = new Team_API(app, this);
+        map_api = new Map_API(app, this);
         player_api = new Player_API(app, this);
         teamlist = db.teamDao().getAllTeams();
     }
@@ -109,12 +111,10 @@ public class Repository {
     }
 
     public Coord getLongLat(String cityName) {
-        return team_api.getLongLat(cityName);
+        return map_api.getLongLat(cityName);
     }
 
     public void loadPlayer(String name){
         player_api.getPlayer(name);
     }
-
-
 }
