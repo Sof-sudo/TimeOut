@@ -16,7 +16,6 @@ import com.google.gson.GsonBuilder;
 
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Teams_API.BasketBallTeamsAPI;
-import dk.au.mad21spring.appproject.group21.Teams_API.Coord;
 
 public class Team_API {
 
@@ -77,42 +76,6 @@ public class Team_API {
 
             repository.addTeamAsynch(team);
         }
-    }
-
-
-    public Coord getLongLat(String cityName) {
-        String url = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=8b94ba400f3f60b2d6f7fc1980b6f4fe&units=metric";
-        final Coord coord = new Coord();
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                if (requestQueue == null) {
-                    requestQueue = Volley.newRequestQueue(app);
-                }
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Coord coordFromJson = parseJsonLongLat(response);
-                        coord.setLon(coordFromJson.getLon());
-                        coord.setLat(coordFromJson.getLat());
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-                requestQueue.add(stringRequest);
-            }
-        });
-
-        return coord;
-    }
-
-    private Coord parseJsonLongLat(String json) {
-        Gson gson = new GsonBuilder().create();
-        Coord coord = gson.fromJson(json, Coord.class);
-        return coord;
     }
 
 }

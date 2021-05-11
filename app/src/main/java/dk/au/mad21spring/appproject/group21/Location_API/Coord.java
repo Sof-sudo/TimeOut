@@ -1,5 +1,5 @@
 
-package dk.au.mad21spring.appproject.group21.Teams_API;
+package dk.au.mad21spring.appproject.group21.Location_API;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
