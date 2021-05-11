@@ -6,8 +6,8 @@
     <string name="Search">Søg</string>
     <string name="SearchField">Søg her</string>
     <string name="title_activity_location">Kort</string>
-    <string name="viewPlayers">Se spillere</string>
     <string name="viewLocation">Se lokation</string>
     <string name="txtTeamName">"Holdnavn "</string>
-    <string name="viewLatestGames">Se sidst spillede kampe</string>
+    <string name="viewLatestGames">Find kamp</string>
+    <string name="viewPlayers">Find spiller</string>
 </resources>

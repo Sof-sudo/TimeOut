@@ -3,8 +3,8 @@
     <string name="txtTeamName">TeamName</string>
     <string name="TeamLogo">Team Logo</string>
     <string name="viewLocation">View Location</string>
-    <string name="viewPlayers">View Players</string>
-    <string name="viewLatestGames">View Latest Games</string>
+    <string name="viewPlayers">Find Player</string>
+    <string name="viewLatestGames">Find match</string>
     <string name="btnBackPlayer">Back</string>
     <string name="txtPlayers">Players:</string>
     <string name="Search">Search</string>

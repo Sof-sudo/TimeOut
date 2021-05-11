@@ -94,8 +94,8 @@ public class ForegroundService extends Service {//Service LifecycleService
     private void NBANotification(Team team) {
         Log.i(TAG, "Notification NBA");
                Notification notification = new NotificationCompat.Builder(this, SERVICE_CHANNEL)
-                .setContentTitle("New team data available")
-                .setContentText("Check out data from team " + team.getFullname())//+ team.getName()
+                .setContentTitle("Team data available")
+                .setContentText("Check out data from " + team.getFullname())//+ team.getName()
                 .setSmallIcon(R.drawable.ic_basketball_24)
                 .build();
         startForeground(NOTIFICATION_id, notification);
