@@ -16,6 +16,7 @@ import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Database.TimeOutDatabase;
 import dk.au.mad21spring.appproject.group21.Location_API.Coord;
+import dk.au.mad21spring.appproject.group21.Viewmodels.LocationViewModel;
 
 public class Repository {
 
@@ -110,8 +111,8 @@ public class Repository {
         team_api.getAllTeams();
     }
 
-    public Coord getLongLat(String cityName) {
-        return map_api.getLongLat(cityName);
+    public void getLongLat(String cityName, VolleyCallback callback) {
+        map_api.getLongLat(cityName, callback);
     }
 
     public void loadPlayer(String name){

@@ -2,6 +2,9 @@ package dk.au.mad21spring.appproject.group21;
 
 import android.app.Application;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -14,6 +17,7 @@ import com.google.gson.GsonBuilder;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import dk.au.mad21spring.appproject.group21.Location_API.CityWeather;
 import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 
 public class Map_API {
@@ -21,7 +25,6 @@ public class Map_API {
     private ExecutorService executor;
     private Application app;
     private Repository repository;
-
 
     public Map_API(Application app, Repository repository) {
 
@@ -32,9 +35,9 @@ public class Map_API {
 
     private RequestQueue requestQueue;
 
-    public Coord getLongLat(String cityName) {
+    public void getLongLat(String cityName, final VolleyCallback callback) {
         String url = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=8b94ba400f3f60b2d6f7fc1980b6f4fe&units=metric";
-        final Coord coord = new Coord();
+        //final Coord coord = new Coord();
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -45,9 +48,11 @@ public class Map_API {
                     @Override
                     public void onResponse(String response) {
                         Coord coordFromJson = parseJsonLongLat(response);
-                        coord.setLon(coordFromJson.getLon());
-                        coord.setLat(coordFromJson.getLat());
-                    }
+                        //coord.setLon(coordFromJson.getLon());
+                        //coord.setLat(coordFromJson.getLat());
+
+                        callback.onSucces(coordFromJson);
+                    } //Lat og Lon er korrekte her
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -58,13 +63,16 @@ public class Map_API {
             }
         });
 
-        return coord;
+        //return coord;
     }
 
     private Coord parseJsonLongLat(String json) {
         Gson gson = new GsonBuilder().create();
-        Coord coord = gson.fromJson(json, Coord.class);
-        return coord;
+        CityWeather cityWeather = gson.fromJson(json, CityWeather.class);
+        Coord coord = new Coord();
+        coord.setLat(cityWeather.getCoord().getLat());
+        coord.setLon(cityWeather.getCoord().getLon());
+        return coord; //Lat og lon er korrekte her
     }
 
 }

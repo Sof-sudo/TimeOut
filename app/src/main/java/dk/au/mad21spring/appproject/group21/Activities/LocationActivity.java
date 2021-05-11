@@ -17,6 +17,7 @@ import dk.au.mad21spring.appproject.group21.Factories.LocationViewModelFactory;
 import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.Viewmodels.LocationViewModel;
+import dk.au.mad21spring.appproject.group21.VolleyCallback;
 
 public class LocationActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -41,11 +42,40 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
         vm = new ViewModelProvider(this, new LocationViewModelFactory(getApplication())).get(LocationViewModel.class);
 
-        //coord = vm.getLongLat(cityName);
+        //getString(new VolleyCallback(){
+        //    @Override
+        //    public void onSucces(Coord result) {
+
+        //    }
+
+        //    @Override
+        //    public void onError(Coord result) {
+
+        //    }
+        //});
+
+        VolleyCallback callback = new VolleyCallback() {
+            @Override
+            public void onSucces(Coord result) {
+                result.getLon();
+                result.getLat();
+            }
+
+            @Override
+            public void onError(Coord result) {
+
+            }
+        };
+
+        vm.getLongLat(cityName, callback);
 
         //Læg koordinaterne i kortet på en sej måde
 
     }
+
+    //private void getString(VolleyCallback volleyCallback) {
+    //}
+
 
     /**
      * Manipulates the map once available.
@@ -64,5 +94,11 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        /*
+        LatLng city = new LatLng(coord.getLat(), coord.getLon());
+        mMap.addMarker(new MarkerOptions().position(city).title("You are here!"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(city));
+        */
     }
 }
