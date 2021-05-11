@@ -17,6 +17,7 @@ import java.util.List;
 import dk.au.mad21spring.appproject.group21.Activities.TeamActivity;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Factories.TeamListViewModelFactory;
+import dk.au.mad21spring.appproject.group21.ForegroundService;
 import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.TeamAdapter;
 import dk.au.mad21spring.appproject.group21.Viewmodels.TeamListViewModel;
@@ -39,6 +40,8 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teamlist);
 
+        startService();
+
         vm = new ViewModelProvider(this, new TeamListViewModelFactory(getApplication())).get(TeamListViewModel.class);
         vm.getTeams().observe(this, new Observer<List<Team>>() {
             @Override
@@ -59,6 +62,11 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
                 Search();
             }
         });
+    }
+
+    private void startService() {
+        Intent foregroundServiceIntent = new Intent(this, ForegroundService.class);
+        startService(foregroundServiceIntent);
     }
 
     private void Search(){

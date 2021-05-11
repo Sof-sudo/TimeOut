@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -39,6 +40,12 @@ public class Repository {
         map_api = new Map_API(app, this);
         player_api = new Player_API(app, this);
         teamlist = db.teamDao().getAllTeams();
+    }
+
+    public Team getRandomTeam(){
+        Random random = new Random();
+int value = random.nextInt(teamlist.getValue().size());
+return teamlist.getValue().get(value);
     }
 
     // Singleton repository - Created with help from Tri.
