@@ -10,4 +10,10 @@
     <string name="txtTeamName">"Holdnavn "</string>
     <string name="viewLatestGames">Find kamp</string>
     <string name="viewPlayers">Find spiller</string>
+    <string name="btnSearchPlayer">Søg</string>
+    <string name="txtPlayerInfo">Spiller information</string>
+    <string name="txtNameStatic">Navn</string>
+    <string name="txtPlayerPositionStatic">Position</string>
+    <string name="txtWeight">Vægt</string>
+    <string name="txtHeight">Højde</string>
 </resources>

@@ -15,4 +15,6 @@
     <string name="txtPlayerInfo">Player info</string>
     <string name="txtNameStatic">Name</string>
     <string name="txtPlayerPositionStatic">Position</string>
+    <string name="txtWeight">Weight</string>
+    <string name="txtHeight">Height</string>
 </resources>

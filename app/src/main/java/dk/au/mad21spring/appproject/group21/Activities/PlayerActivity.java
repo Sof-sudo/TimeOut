@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dk.au.mad21spring.appproject.group21.Database.Player;
@@ -32,7 +33,7 @@ public static final String INDEX = "index";
     private Button btnBack, btnSearch;
     private ImageView imgLogo;
     private TextView txtPlayers;
-    private TextView txtTeam;
+    private TextView txtPosition, txtHeight, txtWeight, txtTeam;
     private EditText edtSearchPlayer;
 
     //ViewModel
@@ -73,6 +74,9 @@ public static final String INDEX = "index";
         imgLogo = findViewById(R.id.imgLogoPlayer);
         btnSearch = findViewById(R.id.btnSearchPlayer);
         edtSearchPlayer = findViewById(R.id.edtSearchPlayer);
+        txtPosition = findViewById(R.id.txtPosition);
+        txtHeight = findViewById(R.id.txtHeight1);
+        txtWeight = findViewById(R.id.txtWeight1);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,7 +127,22 @@ public static final String INDEX = "index";
         String firstname = result.getFirstname();
         String lastname = result.getLastname();
         txtPlayers.setText(firstname+" "+lastname);
+
         String position = result.getPosition();
+        txtPosition.setText(position);
+
+        double heightfeet = result.getHeight_feet() ;
+        double heightInCm = heightfeet * 30.48;
+        double heightinc = result.getHeight_inches();
+        double inchecToCm = heightinc * 2.54;
+        double totalHight = inchecToCm + heightInCm;
+        txtHeight.setText(heightInCm + ". cm");
+
+        DecimalFormat df = new DecimalFormat("0.00");
+        double weight = result.getWeight_pounds();
+        double weightInkg = weight * 0.45;
+        txtWeight.setText(df.format(weightInkg) +" kg");
+
 
 
     }
