@@ -25,7 +25,8 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
     private GoogleMap mMap;
     private LocationViewModel vm;
     private String cityName;
-    private Coord coord;
+    private double lon;
+    private double lat;
 
     public static final String CITY = "CITY";
 
@@ -34,32 +35,20 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
 
         Intent data = getIntent();
         cityName = data.getStringExtra(CITY);
 
         vm = new ViewModelProvider(this, new LocationViewModelFactory(getApplication())).get(LocationViewModel.class);
 
-        //getString(new VolleyCallback(){
-        //    @Override
-        //    public void onSucces(Coord result) {
-
-        //    }
-
-        //    @Override
-        //    public void onError(Coord result) {
-
-        //    }
-        //});
-
         VolleyCallback callback = new VolleyCallback() {
             @Override
             public void onSucces(Coord result) {
-                result.getLon();
-                result.getLat();
+                lon = result.getLon();
+                lat = result.getLat();
+
+                setUpMap();
             }
 
             @Override
@@ -80,8 +69,12 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
         vm.getLongLat(cityName, callback);
 
-        //Læg koordinaterne i kortet på en sej måde
+    }
 
+    private void setUpMap(){
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
     //private void getString(VolleyCallback volleyCallback) {
@@ -101,15 +94,16 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        /*
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        */
 
-        /*
-        LatLng city = new LatLng(coord.getLat(), coord.getLon());
+        LatLng city = new LatLng(lat, lon);
         mMap.addMarker(new MarkerOptions().position(city).title("You are here!"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(city));
-        */
+
     }
 }
