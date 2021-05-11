@@ -69,7 +69,7 @@ public static final String INDEX = "index";
 
     private void setupUI() {
         btnBack = findViewById(R.id.BtnBackPlayer);
-        //txtPlayers = findViewById(R.id.txtPlayers);
+        txtPlayers = findViewById(R.id.txtPlayerName);
         txtTeam = findViewById(R.id.txtNamePlayer);
         imgLogo = findViewById(R.id.imgLogoPlayer);
         btnSearch = findViewById(R.id.btnSearchPlayer);
@@ -82,34 +82,36 @@ public static final String INDEX = "index";
             }
         });
 
-        VolleyCallback callback = new VolleyCallback() {
-            @Override
-            public void onSucces(Coord result) {
-
-            }
-
-            @Override
-            public void onError(Coord result) {
-
-            }
-
-            @Override
-            public void onSuccesPlayer(Player result) {
-                name = result.getFirstname();
-
-            }
-
-            @Override
-            public void onErrorPlayer(Player result) {
-
-            }
-        };
-
         btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            VolleyCallback callback = new VolleyCallback() {
+                @Override
+                public void onSucces(Coord result) {
+
+                }
+
+                @Override
+                public void onError(Coord result) {
+
+                }
+
+                @Override
+                public void onSuccesPlayer(Player result) {
+                    name = result.getFirstname();
+                    txtPlayers.setText(name);
+                    //Showstuff()
+                }
+
+                @Override
+                public void onErrorPlayer(Player result) {
+
+                }
+            };
+
             @Override
             public void onClick(View v) {
                 playerViewModel.getPlayer(edtSearchPlayer.getText().toString(), callback);
-                txtPlayers.setText(name);
+//
             }
         });
     }
