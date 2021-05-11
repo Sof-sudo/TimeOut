@@ -26,6 +26,7 @@ public class Repository {
     private static Repository instance;
     private Application app;
     private LiveData<List<Team>> teamlist;
+    private LiveData<List<Player>> playerList;
 
     //contructor
     public Repository(Application app){
@@ -45,7 +46,6 @@ public class Repository {
         return instance;
     }
 
-//    public String
 
     public LiveData<List<Team>> loadAllTeams(){
         if (teamlist == null){
@@ -66,7 +66,7 @@ public class Repository {
     }
 
     //find a team in the database by the name
-    public Team getTeamAsync(String name)
+    public Team getTeamInDatabase(String name)
     {
         Future<Team> team = executor.submit(new Callable<Team>() {
             @Override
@@ -99,6 +99,33 @@ public class Repository {
                 db.playerDao().addPlayer(player);
             }
         });
+    }
+
+    public Player findPlayerInDatabase(String name){
+        Future<Player> player = executor.submit(new Callable<Player>() {
+            @Override
+            public Player call() {
+                return db.playerDao().findPlayer(name);
+            }
+        });
+        try
+        {
+            return player.get();
+        }
+        catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public LiveData<List<Player>> loadData(){
+        return db.playerDao().getAllPlayers();
     }
 
 

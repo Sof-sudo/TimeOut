@@ -18,8 +18,8 @@ public interface PlayerDao {
     @Query("SELECT * FROM player")
     LiveData<List<Player>> getAllPlayers();
 
-    @Query("SELECT * FROM player WHERE firstname LIKE :firstname AND " + "lastname LIKE :lastname LIMIT 1")
-    Player findPlayer(String firstname, String lastname);
+    @Query("SELECT * FROM player WHERE firstname LIKE :firstname")
+    Player findPlayer(String firstname);
 
     @Update
     void updatePlayer(Player player);

@@ -25,7 +25,7 @@ public class TeamViewModel extends ViewModel
             team = new MutableLiveData<Team>();
         }
 
-        team.setValue(repository.getTeamAsync(name));
+        team.setValue(repository.getTeamInDatabase(name));
         return team;
     }
 }
