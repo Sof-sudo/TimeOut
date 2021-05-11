@@ -44,7 +44,7 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
         vm = new ViewModelProvider(this, new LocationViewModelFactory(getApplication())).get(LocationViewModel.class);
 
-        coord = vm.getLongLat(cityName);
+        //coord = vm.getLongLat(cityName);
 
         //Læg koordinaterne i kortet på en sej måde
 
