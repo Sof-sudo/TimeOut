@@ -5,6 +5,7 @@ package dk.au.mad21spring.appproject.group21.Teams_API;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Teams_API.BasketBallTeamsAPI;
 
 
@@ -30,7 +31,7 @@ public class Datum {
     private String position;
     @SerializedName("team")
     @Expose
-    private BasketBallTeamsAPI team;
+    private Team team;
     @SerializedName("weight_pounds")
     @Expose
     private Integer weightPounds;
@@ -83,11 +84,11 @@ public class Datum {
         this.position = position;
     }
 
-    public BasketBallTeamsAPI getTeam() {
+    public Team getTeam() {
         return team;
     }
 
-    public void setTeam(BasketBallTeamsAPI team) {
+    public void setTeam(Team team) {
         this.team = team;
     }
 

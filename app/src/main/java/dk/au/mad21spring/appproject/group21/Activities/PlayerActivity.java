@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -124,26 +125,28 @@ public static final String INDEX = "index";
     }
 
     private void showPlayerData(Player result){
-        String firstname = result.getFirstname();
-        String lastname = result.getLastname();
-        txtPlayers.setText(firstname+" "+lastname);
+        if (teamName != result.getTeamname()){
+            String firstname = result.getFirstname();
+            String lastname = result.getLastname();
+            txtPlayers.setText(firstname+" "+lastname);
 
-        String position = result.getPosition();
-        txtPosition.setText(position);
+            String position = result.getPosition();
+            txtPosition.setText(position);
 
-        double heightfeet = result.getHeight_feet() ;
-        double heightInCm = heightfeet * 30.48;
-        double heightinc = result.getHeight_inches();
-        double inchecToCm = heightinc * 2.54;
-        double totalHight = inchecToCm + heightInCm;
-        txtHeight.setText(heightInCm + ". cm");
+            double heightfeet = result.getHeight_feet() ;
+            double heightInCm = heightfeet * 30.48;
+            double heightinc = result.getHeight_inches();
+            double inchecToCm = heightinc * 2.54;
+            double totalHight = inchecToCm + heightInCm;
+            txtHeight.setText(totalHight + " cm");
 
-        DecimalFormat df = new DecimalFormat("0.00");
-        double weight = result.getWeight_pounds();
-        double weightInkg = weight * 0.45;
-        txtWeight.setText(df.format(weightInkg) +" kg");
-
-
+            DecimalFormat df = new DecimalFormat("0.00");
+            double weight = result.getWeight_pounds();
+            double weightInkg = weight * 0.45;
+            txtWeight.setText(df.format(weightInkg) +" kg");
+        } else  {
+            Toast.makeText(this, "Player does not play for this team", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

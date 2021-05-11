@@ -3,6 +3,9 @@ package dk.au.mad21spring.appproject.group21.Database;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import dk.au.mad21spring.appproject.group21.Teams_API.BasketBallTeamsAPI;
+import dk.au.mad21spring.appproject.group21.Teams_API.BasketballPlayerAPI;
+
 @Entity
 public class Player {
 
@@ -14,9 +17,10 @@ public class Player {
     private double height_feet;
     private double height_inches;
     private double weight_pounds;
-    //private Teams team;
+    private String teamname;
 
-    public Player(int playerID, String firstname, String lastname, String position, double height_feet, double height_inches, double weight_pounds){
+    public Player(int playerID, String firstname, String lastname, String position, double height_feet, double height_inches,
+                  double weight_pounds, String teamname){
         this.playerID = playerID;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -24,7 +28,7 @@ public class Player {
         this.height_feet = height_feet;
         this.height_inches = height_inches;
         this.weight_pounds = weight_pounds;
-        //this.team = team; //SKAL DENNE HENTES SÅDAN? ELLER MULIGVIS FRA DATABASEN I STEDET?
+        this.teamname = teamname;
     }
 
     public int getPlayerID(){return playerID;}
@@ -48,4 +52,11 @@ public class Player {
     public double getWeight_pounds(){return weight_pounds;}
     public void setWeight_pounds(double weight_pounds){this.weight_pounds = weight_pounds;}
 
+    public String getTeamname() {
+        return teamname;
+    }
+
+    public void setTeamname(String teamname) {
+        this.teamname = teamname;
+    }
 }
