@@ -21,7 +21,6 @@ public class TeamListViewModel extends ViewModel {
     public LiveData<List<Team>> getTeams() {
 
         return repository.loadAllTeams();
-
     }
 
     public void addTeams(){
