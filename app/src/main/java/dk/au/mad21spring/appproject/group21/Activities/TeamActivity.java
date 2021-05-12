@@ -62,7 +62,7 @@ public class TeamActivity extends AppCompatActivity {
         location = findViewById(R.id.btnLocation);
         players = findViewById(R.id.btnPlayers);
         games = findViewById(R.id.btnGames);
-        back = findViewById(R.id.btnBack);
+        back = findViewById(R.id.btnBackLocation);
 
         location.setOnClickListener(new View.OnClickListener() {
             @Override

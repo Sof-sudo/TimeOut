@@ -9,18 +9,18 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/btnBackLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back"
-            android:id="@+id/btnBack"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="@string/btnBackLocation" />
 
         <Button
+            android:id="@+id/btnMapTypeLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Map type"
-            android:id="@+id/btnMapType"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="@string/btnMapTypeLocation" />
 
     </LinearLayout>
 
