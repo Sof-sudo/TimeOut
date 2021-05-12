@@ -1,4 +1,4 @@
-package dk.au.mad21spring.appproject.group21;
+package dk.au.mad21spring.appproject.group21.WEB_API_Classes;
 
 import android.app.Application;
 
@@ -15,8 +15,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import dk.au.mad21spring.appproject.group21.Database.Player;
-import dk.au.mad21spring.appproject.group21.API_classes.BasketballPlayerAPI;
+import dk.au.mad21spring.appproject.group21.Player_API_Classes.BasketballPlayerAPI;
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackPlayer;
+import dk.au.mad21spring.appproject.group21.Repository;
 
 public class Player_API {
     private ExecutorService executor;
@@ -39,20 +40,20 @@ public class Player_API {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                sendRequest(base, false, callback);
+                sendRequest(base, callback);
             }
         });
     }
 
 
-    private void sendRequest(String url, boolean update, VolleyCallbackPlayer callback) {
+    private void sendRequest(String url, VolleyCallbackPlayer callback) {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(app);
         }
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Player player = parseJson(response, update);
+                Player player = parseJson(response);
                 if (player == null)
                 {
                     callback.onErrorPlayer();
@@ -70,7 +71,7 @@ public class Player_API {
     }
 
 
-    private Player parseJson(String json, boolean update) {
+    private Player parseJson(String json) {
         Gson gson = new GsonBuilder().create();
         BasketballPlayerAPI playerData = gson.fromJson(json, BasketballPlayerAPI.class);
         Player player = null;

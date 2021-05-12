@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import dk.au.mad21spring.appproject.group21.Viewmodels.LatestGamesViewModel;
+import dk.au.mad21spring.appproject.group21.Viewmodels.FindGameViewModel;
 
 public class LatestGamesViewModelFactory implements ViewModelProvider.Factory {
 
@@ -19,6 +19,6 @@ public class LatestGamesViewModelFactory implements ViewModelProvider.Factory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new LatestGamesViewModel(app);
+        return (T) new FindGameViewModel(app);
     }
 }

@@ -1,16 +1,19 @@
 
-package dk.au.mad21spring.appproject.group21.API_classes;
+package dk.au.mad21spring.appproject.group21.Game_API_Classes;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class BasketballPlayerAPI {
+public class GamesAPI {
 
     @SerializedName("data")
     @Expose
     private List<Datum> data = null;
+    @SerializedName("meta")
+    @Expose
+    private Meta meta;
 
     public List<Datum> getData() {
         return data;
@@ -18,6 +21,14 @@ public class BasketballPlayerAPI {
 
     public void setData(List<Datum> data) {
         this.data = data;
+    }
+
+    public Meta getMeta() {
+        return meta;
+    }
+
+    public void setMeta(Meta meta) {
+        this.meta = meta;
     }
 
 }

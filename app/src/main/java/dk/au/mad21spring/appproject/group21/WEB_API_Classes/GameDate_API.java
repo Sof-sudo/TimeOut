@@ -1,4 +1,4 @@
-package dk.au.mad21spring.appproject.group21;
+package dk.au.mad21spring.appproject.group21.WEB_API_Classes;
 
 import android.app.Application;
 
@@ -15,9 +15,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import dk.au.mad21spring.appproject.group21.Database.Game;
-import dk.au.mad21spring.appproject.group21.Database.Player;
-import dk.au.mad21spring.appproject.group21.Game_API.GamesAPI;
+import dk.au.mad21spring.appproject.group21.Game_API_Classes.GamesAPI;
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackGame;
+import dk.au.mad21spring.appproject.group21.Repository;
 
 public class GameDate_API {
     private ExecutorService executor;
@@ -40,20 +40,20 @@ public class GameDate_API {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                sendRequest(base, false, callback);
+                sendRequest(base, callback);
             }
         });
     }
 
 
-    private void sendRequest(String url, boolean update, VolleyCallbackGame callback) {
+    private void sendRequest(String url, VolleyCallbackGame callback) {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(app);
         }
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Game game = parseJson(response, update);
+                Game game = parseJson(response);
                 if (game == null)
                 {
                     callback.onErrorGame();
@@ -71,7 +71,7 @@ public class GameDate_API {
     }
 
 
-    private Game parseJson(String json, boolean update) {
+    private Game parseJson(String json) {
         Gson gson = new GsonBuilder().create();
         GamesAPI gameData = gson.fromJson(json, GamesAPI.class);
         Game game = null;

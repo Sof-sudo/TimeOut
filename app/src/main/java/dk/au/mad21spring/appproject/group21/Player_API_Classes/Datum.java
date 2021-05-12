@@ -1,5 +1,5 @@
 
-package dk.au.mad21spring.appproject.group21.API_classes;
+package dk.au.mad21spring.appproject.group21.Player_API_Classes;
 
 
 import com.google.gson.annotations.Expose;
