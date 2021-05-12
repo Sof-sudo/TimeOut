@@ -117,7 +117,7 @@ public class Repository {
         player_api.getPlayer(name, callback);
     }
 
-    public void loadGame(int teamID, int season, String date, VolleyCallbackGame callback){
-        gameDate_api.getGame(teamID, season, date, callback);
+    public void loadGame(int teamID, String date, VolleyCallbackGame callback){
+        gameDate_api.getGame(teamID, date, callback);
     }
 }

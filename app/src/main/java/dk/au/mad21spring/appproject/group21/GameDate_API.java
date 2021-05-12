@@ -15,6 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import dk.au.mad21spring.appproject.group21.Database.Game;
+import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Game_API.GamesAPI;
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackGame;
 
@@ -34,8 +35,8 @@ public class GameDate_API {
     private RequestQueue requestQueue;
 
 
-    public void getGame(int teamID, int season, String date, VolleyCallbackGame callback) {
-        String base = "https://www.balldontlie.io/api/v1/games?team_ids[]="+teamID+"&seasons[]="+season+"&dates[]="+date;
+    public void getGame(int teamID, String date, VolleyCallbackGame callback) {
+        String base = "https://www.balldontlie.io/api/v1/games?team_ids[]="+teamID+"&dates[]="+date;
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -53,8 +54,13 @@ public class GameDate_API {
             @Override
             public void onResponse(String response) {
                 Game game = parseJson(response, update);
-                callback.onSuccesGame(game);
-
+                if (game == null)
+                {
+                    callback.onErrorGame();
+                }
+                else {
+                    callback.onSuccesGame(game);
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -69,12 +75,15 @@ public class GameDate_API {
         Gson gson = new GsonBuilder().create();
         GamesAPI gameData = gson.fromJson(json, GamesAPI.class);
         Game game = null;
-        if (gameData != null) {
+
+        if(gameData.getData().size() == 1)
+        {
             game = new Game(gameData.getData().get(0).getId(), gameData.getData().get(0).getDate(), gameData.getData().get(0).getHomeTeamScore(),
                     gameData.getData().get(0).getVisitorTeamScore(), gameData.getData().get(0).getSeason(), gameData.getData().get(0).getPeriod(),
                     gameData.getData().get(0).getStatus(), gameData.getData().get(0).getTime(), gameData.getData().get(0).getPostseason(),
                     gameData.getData().get(0).getHomeTeam().getFullName(), gameData.getData().get(0).getVisitorTeam().getFullName());
         }
+
         return game;
     }
 }

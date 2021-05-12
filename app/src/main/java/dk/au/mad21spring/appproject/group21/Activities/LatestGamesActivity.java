@@ -57,7 +57,6 @@ public class LatestGamesActivity extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                season = (year-1);
                 date = year+"-"+(month+1)+"-"+dayOfMonth;
             }
         });
@@ -85,7 +84,7 @@ public class LatestGamesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int teamID = latestGamesViewModel.getTeam(teamName).getValue().getTeamID();
-                latestGamesViewModel.loadGame(teamID, season, date);
+                latestGamesViewModel.loadGame(teamID, date);
             }
         });
     }
