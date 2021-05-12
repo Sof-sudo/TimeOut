@@ -107,9 +107,6 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
             mapType = GoogleMap.MAP_TYPE_HYBRID;
             s = "Hybrid";
         } else if(mapType == GoogleMap.MAP_TYPE_HYBRID){
-                mapType = GoogleMap.MAP_TYPE_NONE;
-                s = "None";
-        } else if(mapType == GoogleMap.MAP_TYPE_NONE){
             mapType = GoogleMap.MAP_TYPE_NORMAL;
             s = "Normal";
         } else if(mapType == GoogleMap.MAP_TYPE_NORMAL){
