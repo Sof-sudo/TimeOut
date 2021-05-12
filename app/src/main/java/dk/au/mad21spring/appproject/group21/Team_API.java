@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import dk.au.mad21spring.appproject.group21.Database.Team;
-import dk.au.mad21spring.appproject.group21.Teams_API.BasketBallTeamsAPI;
+import dk.au.mad21spring.appproject.group21.API_classes.BasketBallTeamsAPI;
 
 public class Team_API {
 
