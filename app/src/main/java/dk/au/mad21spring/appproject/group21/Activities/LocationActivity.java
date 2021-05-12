@@ -149,5 +149,8 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
         LatLng city = new LatLng(lat, lon);
         mMap.addMarker(new MarkerOptions().position(city).title("You are here!"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(city));
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                new LatLng(city.latitude, city.longitude), 10));
     }
 }
