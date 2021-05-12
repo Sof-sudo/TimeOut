@@ -18,4 +18,8 @@
     <string name="txtHeight">Højde</string>
     <string name="btnBackLocation">Tilbage</string>
     <string name="btnMapTypeLocation">Kort type</string>
+    <string name="btnSearchGame">Søg</string>
+    <string name="txtHomeTeamStatic">"Hjemmehold "</string>
+    <string name="txtVisitorteamStatic">Udebanehold</string>
+    <string name="txtScoreStatic">Score</string>
 </resources>
