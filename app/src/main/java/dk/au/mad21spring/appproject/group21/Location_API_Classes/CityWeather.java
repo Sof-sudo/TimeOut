@@ -1,5 +1,5 @@
 
-package dk.au.mad21spring.appproject.group21.Location_API;
+package dk.au.mad21spring.appproject.group21.Location_API_Classes;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -10,16 +10,16 @@ public class CityWeather {
 
     @SerializedName("coord")
     @Expose
-    private dk.au.mad21spring.appproject.group21.Location_API.Coord coord;
+    private dk.au.mad21spring.appproject.group21.Location_API_Classes.Coord coord;
     @SerializedName("weather")
     @Expose
-    private List<dk.au.mad21spring.appproject.group21.Location_API.Weather> weather = null;
+    private List<dk.au.mad21spring.appproject.group21.Location_API_Classes.Weather> weather = null;
     @SerializedName("base")
     @Expose
     private String base;
     @SerializedName("main")
     @Expose
-    private dk.au.mad21spring.appproject.group21.Location_API.Main main;
+    private dk.au.mad21spring.appproject.group21.Location_API_Classes.Main main;
     @SerializedName("visibility")
     @Expose
     private Integer visibility;
@@ -28,7 +28,7 @@ public class CityWeather {
     private Wind wind;
     @SerializedName("rain")
     @Expose
-    private dk.au.mad21spring.appproject.group21.Location_API.Rain rain;
+    private dk.au.mad21spring.appproject.group21.Location_API_Classes.Rain rain;
     @SerializedName("clouds")
     @Expose
     private Clouds clouds;
@@ -51,19 +51,19 @@ public class CityWeather {
     @Expose
     private Integer cod;
 
-    public dk.au.mad21spring.appproject.group21.Location_API.Coord getCoord() {
+    public dk.au.mad21spring.appproject.group21.Location_API_Classes.Coord getCoord() {
         return coord;
     }
 
-    public void setCoord(dk.au.mad21spring.appproject.group21.Location_API.Coord coord) {
+    public void setCoord(dk.au.mad21spring.appproject.group21.Location_API_Classes.Coord coord) {
         this.coord = coord;
     }
 
-    public List<dk.au.mad21spring.appproject.group21.Location_API.Weather> getWeather() {
+    public List<dk.au.mad21spring.appproject.group21.Location_API_Classes.Weather> getWeather() {
         return weather;
     }
 
-    public void setWeather(List<dk.au.mad21spring.appproject.group21.Location_API.Weather> weather) {
+    public void setWeather(List<dk.au.mad21spring.appproject.group21.Location_API_Classes.Weather> weather) {
         this.weather = weather;
     }
 
@@ -75,11 +75,11 @@ public class CityWeather {
         this.base = base;
     }
 
-    public dk.au.mad21spring.appproject.group21.Location_API.Main getMain() {
+    public dk.au.mad21spring.appproject.group21.Location_API_Classes.Main getMain() {
         return main;
     }
 
-    public void setMain(dk.au.mad21spring.appproject.group21.Location_API.Main main) {
+    public void setMain(dk.au.mad21spring.appproject.group21.Location_API_Classes.Main main) {
         this.main = main;
     }
 
@@ -99,11 +99,11 @@ public class CityWeather {
         this.wind = wind;
     }
 
-    public dk.au.mad21spring.appproject.group21.Location_API.Rain getRain() {
+    public dk.au.mad21spring.appproject.group21.Location_API_Classes.Rain getRain() {
         return rain;
     }
 
-    public void setRain(dk.au.mad21spring.appproject.group21.Location_API.Rain rain) {
+    public void setRain(dk.au.mad21spring.appproject.group21.Location_API_Classes.Rain rain) {
         this.rain = rain;
     }
 

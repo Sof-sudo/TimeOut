@@ -1,4 +1,4 @@
-package dk.au.mad21spring.appproject.group21;
+package dk.au.mad21spring.appproject.group21.WEB_API_Classes;
 
 import android.app.Application;
 
@@ -15,7 +15,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import dk.au.mad21spring.appproject.group21.Database.Team;
-import dk.au.mad21spring.appproject.group21.API_classes.BasketBallTeamsAPI;
+import dk.au.mad21spring.appproject.group21.Repository;
+import dk.au.mad21spring.appproject.group21.Team_API_Classes.BasketBallTeamsAPI;
 
 public class Team_API {
 
@@ -41,21 +42,21 @@ public class Team_API {
             public void run() {
                 //sendRequest(base, false);
                 for(int i=1; i<31; i++){ // there is 30 teams
-                    sendRequest(base + i, false);
+                    sendRequest(base + i);
                 }
             }
         });
     }
 
 
-    private void sendRequest(String url, boolean update) {
+    private void sendRequest(String url) {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(app);
         }
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                parseJson(response, update);
+                parseJson(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -67,7 +68,7 @@ public class Team_API {
     }
 
 
-    private void parseJson(String json, boolean update) {
+    private void parseJson(String json) {
         Gson gson = new GsonBuilder().create();
         BasketBallTeamsAPI teamData = gson.fromJson(json, BasketBallTeamsAPI.class);
         if (teamData != null) {

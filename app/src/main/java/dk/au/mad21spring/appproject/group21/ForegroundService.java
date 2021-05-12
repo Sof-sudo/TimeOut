@@ -69,7 +69,7 @@ public class ForegroundService extends Service {//Service LifecycleService
     }
 
     private void doNotification() {
-        if (execService == null) { // denne gør at det er muligt at kører på en anden tråd end main thread.
+        if (execService == null) { // denne gør at det er muligt at køre på en anden tråd end main thread.
             execService = Executors.newSingleThreadExecutor();
         }
 
@@ -77,15 +77,13 @@ public class ForegroundService extends Service {//Service LifecycleService
             @Override
             public void run() {
                 try {
-                    Thread.sleep(10000);
+                    Thread.sleep(600000); //10min
                 } catch (InterruptedException e) {
                     Log.e(TAG, "Run Error", e);
                 }
-                //repository.updatePlayerAsynch(); //updatere databasen.
                 if (started) {
-
                     NBANotification(repository.getRandomTeam());//RandomTeam()
-                    doNotification(); // starter igen
+                    doNotification(); // start again
                 }
             }
         });

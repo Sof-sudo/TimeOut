@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import dk.au.mad21spring.appproject.group21.Factories.LocationViewModelFactory;
-import dk.au.mad21spring.appproject.group21.Location_API.Coord;
+import dk.au.mad21spring.appproject.group21.Location_API_Classes.Coord;
 import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.Viewmodels.LocationViewModel;
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackLocation;

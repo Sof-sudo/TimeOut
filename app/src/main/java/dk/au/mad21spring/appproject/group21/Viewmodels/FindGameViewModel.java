@@ -9,17 +9,18 @@ import androidx.lifecycle.ViewModel;
 
 import dk.au.mad21spring.appproject.group21.Database.Game;
 import dk.au.mad21spring.appproject.group21.Database.Team;
+import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.Repository;
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackGame;
 
-public class LatestGamesViewModel extends ViewModel {
+public class FindGameViewModel extends ViewModel {
 
     private Repository repository;
     private MutableLiveData<Team> team;
     private MutableLiveData<Game> game;
     private Application app;
 
-    public LatestGamesViewModel(Application app){
+    public FindGameViewModel(Application app){
         this.app = app;
         repository = Repository.getInstance(app);
     }
@@ -44,7 +45,7 @@ public class LatestGamesViewModel extends ViewModel {
 
         @Override
         public void onErrorGame() {
-            Toast.makeText(app, "Game not found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(app, R.string.Toast_Latestgames, Toast.LENGTH_SHORT).show();
         }
     };
 

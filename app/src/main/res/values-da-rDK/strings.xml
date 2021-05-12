@@ -18,4 +18,11 @@
     <string name="txtHeight">Højde</string>
     <string name="btnBackLocation">Tilbage</string>
     <string name="btnMapTypeLocation">Kort type</string>
+    <string name="btnSearchGame">Søg</string>
+    <string name="txtHomeTeamStatic">"Hjemmehold "</string>
+    <string name="txtVisitorteamStatic">Udebanehold</string>
+    <string name="txtScoreStatic">Score</string>
+    <string name="Toast_TeamListActivity">Der er ikke noget hold med det navn</string>
+    <string name="Toast_Player">Denne spiller spiller ikke for dette hold</string>
+    <string name="Toast_Latestgames">Kampen blev ikke fundet</string>
 </resources>
