@@ -19,4 +19,8 @@
     <string name="txtHeight">Height</string>
     <string name="btnBackLocation">Back</string>
     <string name="btnMapTypeLocation">Map type</string>
+    <string name="btnSearchGame">Search</string>
+    <string name="txtHomeTeamStatic">Home team</string>
+    <string name="txtVisitorteamStatic">Visitor team</string>
+    <string name="txtScoreStatic">Score</string>
 </resources>
