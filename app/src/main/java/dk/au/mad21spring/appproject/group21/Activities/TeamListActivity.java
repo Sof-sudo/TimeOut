@@ -79,7 +79,7 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
             intent.putExtra(TEAM,team.getName());
             startActivity(intent);
         } else {
-            Toast.makeText(this, "There is no team with that name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.Toast_TeamListActivity, Toast.LENGTH_SHORT).show();
         }
 
         searchField.setText("");

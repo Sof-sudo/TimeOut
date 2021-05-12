@@ -23,4 +23,7 @@
     <string name="txtHomeTeamStatic">Home team</string>
     <string name="txtVisitorteamStatic">Visitor team</string>
     <string name="txtScoreStatic">Score</string>
+    <string name="Toast_TeamListActivity">There is no team with that name</string>
+    <string name="Toast_Player">Player does not play for this team</string>
+    <string name="Toast_Latestgames">Game not found</string>
 </resources>

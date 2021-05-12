@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
+import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.Repository;
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackPlayer;
 
@@ -47,7 +48,7 @@ public class PlayerViewModel extends ViewModel {
 
         @Override
         public void onErrorPlayer() {
-            Toast.makeText(app, "Player not found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(app, R.string.Toast_Player, Toast.LENGTH_SHORT).show();
         }
     };
 
