@@ -7,11 +7,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import dk.au.mad21spring.appproject.group21.Database.Game;
-import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
-import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 import dk.au.mad21spring.appproject.group21.Repository;
-import dk.au.mad21spring.appproject.group21.VolleyCallback;
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackGame;
 
 public class LatestGamesViewModel extends ViewModel {
 
@@ -35,27 +33,7 @@ public class LatestGamesViewModel extends ViewModel {
 
     }
 
-    VolleyCallback callback = new VolleyCallback() {
-        @Override
-        public void onSucces(Coord result) {
-
-        }
-
-        @Override
-        public void onError(Coord result) {
-
-        }
-
-        @Override
-        public void onSuccesPlayer(Player result) {
-
-        }
-
-        @Override
-        public void onErrorPlayer(Player result) {
-
-        }
-
+    VolleyCallbackGame callback = new VolleyCallbackGame() {
         @Override
         public void onSuccesGame(Game result) {
             game.setValue(result);

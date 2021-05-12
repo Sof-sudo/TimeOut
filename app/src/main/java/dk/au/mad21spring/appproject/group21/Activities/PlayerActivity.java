@@ -11,20 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;
-import java.util.List;
 
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Factories.PlayerViewModelFactory;
-import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.Viewmodels.PlayerViewModel;
-import dk.au.mad21spring.appproject.group21.VolleyCallback;
 
 public class PlayerActivity extends AppCompatActivity {
 

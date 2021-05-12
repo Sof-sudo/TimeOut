@@ -13,11 +13,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Database.TimeOutDatabase;
-import dk.au.mad21spring.appproject.group21.Location_API.Coord;
-import dk.au.mad21spring.appproject.group21.Viewmodels.LocationViewModel;
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackGame;
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackLocation;
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackPlayer;
 
 public class Repository {
 
@@ -109,15 +109,15 @@ public class Repository {
         team_api.getAllTeams();
     }
 
-    public void getLongLat(String cityName, VolleyCallback callback) {
+    public void getLongLat(String cityName, VolleyCallbackLocation callback) {
         map_api.getLongLat(cityName, callback);
     }
 
-    public void loadPlayer(String name, VolleyCallback callback){
+    public void loadPlayer(String name, VolleyCallbackPlayer callback){
         player_api.getPlayer(name, callback);
     }
 
-    public void loadGame(int teamID, int season, String date, VolleyCallback callback){
+    public void loadGame(int teamID, int season, String date, VolleyCallbackGame callback){
         gameDate_api.getGame(teamID, season, date, callback);
     }
 }

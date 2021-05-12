@@ -16,6 +16,7 @@ import java.util.concurrent.Executors;
 
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.API_classes.BasketballPlayerAPI;
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackPlayer;
 
 public class Player_API {
     private ExecutorService executor;
@@ -33,7 +34,7 @@ public class Player_API {
     private RequestQueue requestQueue;
 
 
-    public void getPlayer(String name, VolleyCallback callback) {
+    public void getPlayer(String name, VolleyCallbackPlayer callback) {
         String base = "https://www.balldontlie.io/api/v1/players?search="+name;
         executor.execute(new Runnable() {
             @Override
@@ -44,7 +45,7 @@ public class Player_API {
     }
 
 
-    private void sendRequest(String url, boolean update, VolleyCallback callback) {
+    private void sendRequest(String url, boolean update, VolleyCallbackPlayer callback) {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(app);
         }

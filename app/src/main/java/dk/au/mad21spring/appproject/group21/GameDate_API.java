@@ -16,6 +16,7 @@ import java.util.concurrent.Executors;
 
 import dk.au.mad21spring.appproject.group21.Database.Game;
 import dk.au.mad21spring.appproject.group21.Game_API.GamesAPI;
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackGame;
 
 public class GameDate_API {
     private ExecutorService executor;
@@ -33,7 +34,7 @@ public class GameDate_API {
     private RequestQueue requestQueue;
 
 
-    public void getGame(int teamID, int season, String date, VolleyCallback callback) {
+    public void getGame(int teamID, int season, String date, VolleyCallbackGame callback) {
         String base = "https://www.balldontlie.io/api/v1/games?team_ids[]="+teamID+"&seasons[]="+season+"&dates[]="+date;
         executor.execute(new Runnable() {
             @Override
@@ -44,7 +45,7 @@ public class GameDate_API {
     }
 
 
-    private void sendRequest(String url, boolean update, VolleyCallback callback) {
+    private void sendRequest(String url, boolean update, VolleyCallbackGame callback) {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(app);
         }
