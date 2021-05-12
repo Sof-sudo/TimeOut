@@ -75,7 +75,7 @@ return teamlist.getValue().get(value);
         });
     }
 
-    //find a team in the database by the name
+    //find a team in the database by the name, fullname or cityname
     public Team getTeamInDatabase(String name)
     {
         Future<Team> team = executor.submit(new Callable<Team>() {
