@@ -1,5 +1,6 @@
 package dk.au.mad21spring.appproject.group21;
 
+import dk.au.mad21spring.appproject.group21.Database.Game;
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 
