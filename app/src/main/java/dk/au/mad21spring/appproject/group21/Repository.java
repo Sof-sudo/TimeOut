@@ -44,8 +44,8 @@ public class Repository {
 
     public Team getRandomTeam(){
         Random random = new Random();
-int value = random.nextInt(teamlist.getValue().size());
-return teamlist.getValue().get(value);
+        int value = random.nextInt(teamlist.getValue().size());
+        return teamlist.getValue().get(value);
     }
 
     // Singleton repository - Created with help from Tri.
@@ -101,43 +101,6 @@ return teamlist.getValue().get(value);
 
         return null;
     }
-
-    public void addPlayerAsynch(Player player) {
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                db.playerDao().addPlayer(player);
-            }
-        });
-    }
-
-    public Player findPlayerInDatabase(String name){
-        Future<Player> player = executor.submit(new Callable<Player>() {
-            @Override
-            public Player call() {
-                return db.playerDao().findPlayer(name);
-            }
-        });
-        try
-        {
-            return player.get();
-        }
-        catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        }
-        catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    public LiveData<List<Player>> loadData(){
-        return db.playerDao().getAllPlayers();
-    }
-
 
 ///////////////// Get data from API /////////////////////////////////
 

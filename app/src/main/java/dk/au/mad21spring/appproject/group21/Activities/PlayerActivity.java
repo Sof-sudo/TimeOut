@@ -65,6 +65,13 @@ public static final String INDEX = "index";
             }
         });
 
+        playerViewModel.getPlayer().observe(this, new Observer<Player>() {
+            @Override
+            public void onChanged(Player player) {
+                showPlayerData(player);
+            }
+        });
+
         setupUI();
     }
 
@@ -87,32 +94,9 @@ public static final String INDEX = "index";
         });
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
-
-            VolleyCallback callback = new VolleyCallback() {
-                @Override
-                public void onSucces(Coord result) {
-
-                }
-
-                @Override
-                public void onError(Coord result) {
-
-                }
-
-                @Override
-                public void onSuccesPlayer(Player result) {
-                    showPlayerData(result);
-                }
-
-                @Override
-                public void onErrorPlayer(Player result) {
-
-                }
-            };
-
             @Override
             public void onClick(View v) {
-                playerViewModel.getPlayer(edtSearchPlayer.getText().toString(), callback);
+                playerViewModel.loadPlayer(edtSearchPlayer.getText().toString());
             }
         });
     }
@@ -144,9 +128,10 @@ public static final String INDEX = "index";
             double weight = result.getWeight_pounds();
             double weightInkg = weight * 0.45;
             txtWeight.setText(df.format(weightInkg) +" kg");
-        } else  {
-            Toast.makeText(this, "Player does not play for this team", Toast.LENGTH_SHORT).show();
         }
+//        else  {
+//            Toast.makeText(this, "Player does not play for this team", Toast.LENGTH_SHORT).show();
+//        }
 
     }
 
