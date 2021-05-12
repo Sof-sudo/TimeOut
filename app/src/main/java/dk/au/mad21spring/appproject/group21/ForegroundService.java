@@ -83,7 +83,9 @@ public class ForegroundService extends Service {//Service LifecycleService
                 } catch (InterruptedException e) {
                     Log.e(TAG, "Run Error", e);
                 }
+                //repository.updatePlayerAsynch(); //updatere databasen.
                 if (started) {
+
                     NBANotification(repository.getRandomTeam());//RandomTeam()
                     doNotification(); // starter igen
                 }
