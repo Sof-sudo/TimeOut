@@ -3,6 +3,7 @@ package dk.au.mad21spring.appproject.group21;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -63,12 +64,24 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         // ui widgets
         TextView txtTeamName;
         ImageView imgTeamLogo;
+        ImageButton btnStar;
 
         public TeamViewHolder(@NonNull View itemView, TeamAdapter.ITeamItemClickedListener teamItemClickedListener){
             super(itemView);
 
             txtTeamName = itemView.findViewById(R.id.txtTeamName);
             imgTeamLogo = itemView.findViewById(R.id.imgTeamLogo);
+            btnStar = itemView.findViewById(R.id.btnStar);
+            btnStar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(btnStar.getBackground().equals(R.drawable.ic_star_foreground)){
+                        btnStar.setBackgroundResource(R.drawable.ic_star_filled_foreground);
+                    } else{
+                        btnStar.setBackgroundResource(R.drawable.ic_star_foreground);
+                    }
+                }
+            });
             listener = teamItemClickedListener;
 
             itemView.setOnClickListener(this);
