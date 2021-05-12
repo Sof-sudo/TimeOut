@@ -25,4 +25,5 @@
     <string name="Toast_TeamListActivity">Der er ikke noget hold med det navn</string>
     <string name="Toast_Player">Denne spiller spiller ikke for dette hold</string>
     <string name="Toast_Latestgames">Kampen blev ikke fundet</string>
+    <string name="Toast_Location">"Korttype er ændret til "</string>
 </resources>

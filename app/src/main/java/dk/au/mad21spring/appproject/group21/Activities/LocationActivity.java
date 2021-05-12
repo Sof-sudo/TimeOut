@@ -109,7 +109,7 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
         }
 
         mMap.setMapType(mapType);
-        Toast.makeText(getApplicationContext(), "Maptype changed to " + s, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 
     private void setUpMap(){
