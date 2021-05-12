@@ -15,8 +15,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Factories.LocationViewModelFactory;
@@ -80,7 +78,7 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
         vm.getLongLat(cityName, callback);
 
-        btnBack = findViewById(R.id.btnBack);
+        btnBack = findViewById(R.id.btnBackLocation);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +86,7 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
             }
         });
 
-        btnMapType = findViewById(R.id.btnMapType);
+        btnMapType = findViewById(R.id.btnMapTypeLocation);
         btnMapType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

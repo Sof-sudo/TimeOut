@@ -7,7 +7,7 @@
     tools:context=".Activities.TeamActivity">
 
     <Button
-        android:id="@+id/btnBack"
+        android:id="@+id/btnBackLocation"
         android:layout_width="210dp"
         android:layout_height="90dp"
         android:layout_marginTop="32dp"
