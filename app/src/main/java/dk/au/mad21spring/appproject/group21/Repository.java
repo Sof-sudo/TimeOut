@@ -25,11 +25,11 @@ public class Repository {
     private Team_API team_api;
     private Map_API map_api;
     private Player_API player_api;
+    private GameDate_API gameDate_api;
     private ExecutorService executor;
     private static Repository instance;
     private Application app;
     private LiveData<List<Team>> teamlist;
-    private LiveData<List<Player>> playerList;
 
     //contructor
     public Repository(Application app){
@@ -39,6 +39,7 @@ public class Repository {
         team_api = new Team_API(app, this);
         map_api = new Map_API(app, this);
         player_api = new Player_API(app, this);
+        gameDate_api = new GameDate_API(app,this);
         teamlist = db.teamDao().getAllTeams();
     }
 
@@ -114,5 +115,9 @@ public class Repository {
 
     public void loadPlayer(String name, VolleyCallback callback){
         player_api.getPlayer(name, callback);
+    }
+
+    public void loadGame(int teamID, int season, String date, VolleyCallback callback){
+        gameDate_api.getGame(teamID, season, date, callback);
     }
 }

@@ -1,5 +1,6 @@
 package dk.au.mad21spring.appproject.group21.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -8,12 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.CalendarView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
-import dk.au.mad21spring.appproject.group21.Database.Team;
+import dk.au.mad21spring.appproject.group21.Database.Game;
 import dk.au.mad21spring.appproject.group21.Factories.LatestGamesViewModelFactory;
 import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.Viewmodels.LatestGamesViewModel;
@@ -22,15 +21,17 @@ public class LatestGamesActivity extends AppCompatActivity {
     //public static final String INDEX = "index";
 
     // widgets
-    private Button btnBack;
-    private ImageView imgLogo;
-    private TextView txtTeam;
+    private Button btnBack, btnSearch;
+    private CalendarView calendarView;
+    private TextView txtHometeam, txtVisitorteam, txtScoreHometeam, txtScoreVisitorteam;
 
     //ViewModel
     private LatestGamesViewModel latestGamesViewModel;
 
     //Other
     private String teamName;
+    private String date;
+    private int season;
 
     public static final String TEAM = "TEAM";
 
@@ -44,21 +45,34 @@ public class LatestGamesActivity extends AppCompatActivity {
 
         //create ViewModel
         latestGamesViewModel = new ViewModelProvider(this, new LatestGamesViewModelFactory(getApplication())).get(LatestGamesViewModel.class);
-        latestGamesViewModel.getTeam(teamName).observe(this, new Observer<Team>() {
+        latestGamesViewModel.getGame().observe(this, new Observer<Game>() {
             @Override
-            public void onChanged(Team team) {
-                updateUI(team);
+            public void onChanged(Game game) {
+                showGameData(game);
             }
         });
 
-setupUI();
+        setupUI();
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                season = (year-1);
+                date = year+"-"+(month+1)+"-"+dayOfMonth;
+            }
+        });
+
 
     }
 
     private void setupUI() {
         btnBack = findViewById(R.id.btnBackStats);
-        txtTeam = findViewById(R.id.txtNameStats);
-        imgLogo = findViewById(R.id.imgLogoStats);
+        btnSearch = findViewById(R.id.btnSearchGame);
+        txtHometeam = findViewById(R.id.txtHometeam);
+        txtVisitorteam = findViewById(R.id.txtVisitorTeam);
+        txtScoreHometeam = findViewById(R.id.txtScoreHometeam);
+        txtScoreVisitorteam = findViewById(R.id.txtScoreVisitorteam);
+        calendarView = findViewById(R.id.calendarView);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,16 +80,26 @@ setupUI();
                 finish();
             }
         });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int teamID = latestGamesViewModel.getTeam(teamName).getValue().getTeamID();
+                latestGamesViewModel.loadGame(teamID, season, date);
+            }
+        });
     }
 
-    private void updateUI(Team team) {
-        Glide.with(this).load("https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/"+team.getAbbreviation()
-                .toLowerCase()+".png").into(imgLogo);
+    private void showGameData(Game game) {
+        String hometeam = game.getHometeam();
+        String visitorteam = game.getVisitorteam();
+        txtHometeam.setText(hometeam);
+        txtVisitorteam.setText(visitorteam);
 
-        txtTeam.setText(team.getFullname());
-
-
-
+        int scoreHometeam = game.getHomeTeamScore();
+        int scoreVisitorteam = game.getVisitorTeamScore();
+        txtScoreHometeam.setText(scoreHometeam+"");
+        txtScoreVisitorteam.setText(scoreVisitorteam+"");
 
     }
 }

@@ -16,6 +16,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import dk.au.mad21spring.appproject.group21.Database.Game;
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Factories.LocationViewModelFactory;
 import dk.au.mad21spring.appproject.group21.Location_API.Coord;
@@ -72,6 +73,16 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
             @Override
             public void onErrorPlayer(Player result) {
+
+            }
+
+            @Override
+            public void onSuccesGame(Game result) {
+
+            }
+
+            @Override
+            public void onErrorGame(Game result) {
 
             }
         };
