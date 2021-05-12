@@ -52,6 +52,7 @@ public class Map_API {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(app, "The city cannot be found", Toast.LENGTH_SHORT).show();
+                        callback.onError();
                     }
                 });
                 requestQueue.add(stringRequest);

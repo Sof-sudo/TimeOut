@@ -10,7 +10,6 @@ import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackLocation;
 public class LocationViewModel extends ViewModel {
     private Repository repository;
 
-
     public LocationViewModel(Application app){
         repository = Repository.getInstance(app);
     }

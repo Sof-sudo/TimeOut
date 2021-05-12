@@ -49,7 +49,7 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
         vm = new ViewModelProvider(this, new LocationViewModelFactory(getApplication())).get(LocationViewModel.class);
 
-        //Indsæt ref??
+        //Callback function med inspiration fra https://stackoverflow.com/questions/28120029/how-can-i-return-value-from-function-onresponse-of-volley
         VolleyCallbackLocation callback = new VolleyCallbackLocation() {
             @Override
             public void onSucces(Coord result) {
@@ -60,8 +60,10 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
             }
 
             @Override
-            public void onError(Coord result) {
-
+            public void onError() {
+                lon = 0;
+                lat = 0;
+                setUpMap();
             }
         };
 
@@ -128,13 +130,14 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+//        if (lat != 0 && lon != 0) {
+            mMap = googleMap;
+            LatLng city = new LatLng(lat, lon);
+            mMap.addMarker(new MarkerOptions().position(city).title("You are here!"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(city));
 
-        LatLng city = new LatLng(lat, lon);
-        mMap.addMarker(new MarkerOptions().position(city).title("You are here!"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(city));
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                new LatLng(city.latitude, city.longitude), 10));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                    new LatLng(city.latitude, city.longitude), 10));
+//        }
     }
 }

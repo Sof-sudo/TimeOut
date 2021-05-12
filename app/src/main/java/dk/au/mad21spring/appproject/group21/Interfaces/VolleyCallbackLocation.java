@@ -6,5 +6,5 @@ import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 
 public interface VolleyCallbackLocation {
         void onSucces(Coord result);
-        void onError(Coord result);
+        void onError();
 }
