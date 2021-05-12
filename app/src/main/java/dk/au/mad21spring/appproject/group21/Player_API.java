@@ -15,9 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import dk.au.mad21spring.appproject.group21.Database.Player;
-import dk.au.mad21spring.appproject.group21.Database.Team;
-import dk.au.mad21spring.appproject.group21.Teams_API.BasketBallTeamsAPI;
-import dk.au.mad21spring.appproject.group21.Teams_API.BasketballPlayerAPI;
+import dk.au.mad21spring.appproject.group21.API_classes.BasketballPlayerAPI;
 
 public class Player_API {
     private ExecutorService executor;

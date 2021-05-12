@@ -3,9 +3,6 @@ package dk.au.mad21spring.appproject.group21.Database;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import dk.au.mad21spring.appproject.group21.Teams_API.BasketBallTeamsAPI;
-import dk.au.mad21spring.appproject.group21.Teams_API.BasketballPlayerAPI;
-
 @Entity
 public class Player {
 
