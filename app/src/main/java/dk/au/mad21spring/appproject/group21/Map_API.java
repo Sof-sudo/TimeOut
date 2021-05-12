@@ -37,7 +37,6 @@ public class Map_API {
 
     public void getLongLat(String cityName, final VolleyCallback callback) {
         String url = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=8b94ba400f3f60b2d6f7fc1980b6f4fe&units=metric";
-        //final Coord coord = new Coord();
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -48,11 +47,8 @@ public class Map_API {
                     @Override
                     public void onResponse(String response) {
                         Coord coordFromJson = parseJsonLongLat(response);
-                        //coord.setLon(coordFromJson.getLon());
-                        //coord.setLat(coordFromJson.getLat());
-
                         callback.onSucces(coordFromJson);
-                    } //Lat og Lon er korrekte her
+                    }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -62,8 +58,6 @@ public class Map_API {
                 requestQueue.add(stringRequest);
             }
         });
-
-        //return coord;
     }
 
     private Coord parseJsonLongLat(String json) {
@@ -72,7 +66,7 @@ public class Map_API {
         Coord coord = new Coord();
         coord.setLat(cityWeather.getCoord().getLat());
         coord.setLon(cityWeather.getCoord().getLon());
-        return coord; //Lat og lon er korrekte her
+        return coord;
     }
 
 }
