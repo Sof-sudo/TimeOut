@@ -3,9 +3,6 @@ package dk.au.mad21spring.appproject.group21;
 import android.app.Application;
 import android.widget.Toast;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -18,6 +15,7 @@ import com.google.gson.GsonBuilder;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackLocation;
 import dk.au.mad21spring.appproject.group21.Location_API.CityWeather;
 import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 
@@ -36,7 +34,7 @@ public class Map_API {
 
     private RequestQueue requestQueue;
 
-    public void getLongLat(String cityName, final VolleyCallback callback) {
+    public void getLongLat(String cityName, final VolleyCallbackLocation callback) {
         String url = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=8b94ba400f3f60b2d6f7fc1980b6f4fe&units=metric";
         executor.execute(new Runnable() {
             @Override

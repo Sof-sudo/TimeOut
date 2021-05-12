@@ -4,9 +4,8 @@ import android.app.Application;
 
 import androidx.lifecycle.ViewModel;
 
-import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 import dk.au.mad21spring.appproject.group21.Repository;
-import dk.au.mad21spring.appproject.group21.VolleyCallback;
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackLocation;
 
 public class LocationViewModel extends ViewModel {
     private Repository repository;
@@ -16,7 +15,7 @@ public class LocationViewModel extends ViewModel {
         repository = Repository.getInstance(app);
     }
 
-    public void getLongLat(String cityName, VolleyCallback callback)
+    public void getLongLat(String cityName, VolleyCallbackLocation callback)
     {
         repository.getLongLat(cityName, callback);
     }

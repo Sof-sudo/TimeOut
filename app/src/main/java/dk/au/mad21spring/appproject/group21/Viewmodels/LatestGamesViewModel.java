@@ -1,25 +1,26 @@
 package dk.au.mad21spring.appproject.group21.Viewmodels;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import dk.au.mad21spring.appproject.group21.Database.Game;
-import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
-import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 import dk.au.mad21spring.appproject.group21.Repository;
-import dk.au.mad21spring.appproject.group21.VolleyCallback;
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackGame;
 
 public class LatestGamesViewModel extends ViewModel {
 
     private Repository repository;
     private MutableLiveData<Team> team;
     private MutableLiveData<Game> game;
+    private Application app;
 
     public LatestGamesViewModel(Application app){
+        this.app = app;
         repository = Repository.getInstance(app);
     }
 
@@ -35,35 +36,15 @@ public class LatestGamesViewModel extends ViewModel {
 
     }
 
-    VolleyCallback callback = new VolleyCallback() {
-        @Override
-        public void onSucces(Coord result) {
-
-        }
-
-        @Override
-        public void onError(Coord result) {
-
-        }
-
-        @Override
-        public void onSuccesPlayer(Player result) {
-
-        }
-
-        @Override
-        public void onErrorPlayer(Player result) {
-
-        }
-
+    VolleyCallbackGame callback = new VolleyCallbackGame() {
         @Override
         public void onSuccesGame(Game result) {
             game.setValue(result);
         }
 
         @Override
-        public void onErrorGame(Game result) {
-
+        public void onErrorGame() {
+            Toast.makeText(app, "Game not found", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -77,8 +58,8 @@ public class LatestGamesViewModel extends ViewModel {
         return game;
     }
 
-    public void loadGame(int teamID, int season, String date){
-        repository.loadGame(teamID, season, date, callback);
+    public void loadGame(int teamID, String date){
+        repository.loadGame(teamID, date, callback);
     }
 
 }

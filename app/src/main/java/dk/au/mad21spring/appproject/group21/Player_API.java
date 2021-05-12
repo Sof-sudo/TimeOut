@@ -16,6 +16,7 @@ import java.util.concurrent.Executors;
 
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.API_classes.BasketballPlayerAPI;
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackPlayer;
 
 public class Player_API {
     private ExecutorService executor;
@@ -33,7 +34,7 @@ public class Player_API {
     private RequestQueue requestQueue;
 
 
-    public void getPlayer(String name, VolleyCallback callback) {
+    public void getPlayer(String name, VolleyCallbackPlayer callback) {
         String base = "https://www.balldontlie.io/api/v1/players?search="+name;
         executor.execute(new Runnable() {
             @Override
@@ -44,7 +45,7 @@ public class Player_API {
     }
 
 
-    private void sendRequest(String url, boolean update, VolleyCallback callback) {
+    private void sendRequest(String url, boolean update, VolleyCallbackPlayer callback) {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(app);
         }
@@ -52,8 +53,13 @@ public class Player_API {
             @Override
             public void onResponse(String response) {
                 Player player = parseJson(response, update);
-                callback.onSuccesPlayer(player);
-
+                if (player == null)
+                {
+                    callback.onErrorPlayer();
+                }
+                else {
+                    callback.onSuccesPlayer(player);
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -68,11 +74,26 @@ public class Player_API {
         Gson gson = new GsonBuilder().create();
         BasketballPlayerAPI playerData = gson.fromJson(json, BasketballPlayerAPI.class);
         Player player = null;
-        if (playerData != null) {
+
+        if (playerData.getData().size() == 1)
+        {
             player = new Player(playerData.getData().get(0).getId(),playerData.getData().get(0).getFirstName(), playerData.getData().get(0).getLastName(),
                     playerData.getData().get(0).getPosition(),playerData.getData().get(0).getHeightFeet(),playerData.getData().get(0).getHeightInches(),
                     playerData.getData().get(0).getWeightPounds(), playerData.getData().get(0).getTeam().getName());
         }
+
         return player;
+
+
+
+//        if (playerData.getData().size() == 0 || playerData.getData().size() > 1) {
+//            return player;
+//        }
+//        else {
+//            player = new Player(playerData.getData().get(0).getId(),playerData.getData().get(0).getFirstName(), playerData.getData().get(0).getLastName(),
+//                    playerData.getData().get(0).getPosition(),playerData.getData().get(0).getHeightFeet(),playerData.getData().get(0).getHeightInches(),
+//                    playerData.getData().get(0).getWeightPounds(), playerData.getData().get(0).getTeam().getName());
+//            return player;
+//        }
     }
 }

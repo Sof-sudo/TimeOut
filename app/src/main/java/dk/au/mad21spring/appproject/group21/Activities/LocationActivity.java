@@ -16,13 +16,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import dk.au.mad21spring.appproject.group21.Database.Game;
-import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Factories.LocationViewModelFactory;
 import dk.au.mad21spring.appproject.group21.Location_API.Coord;
 import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.Viewmodels.LocationViewModel;
-import dk.au.mad21spring.appproject.group21.VolleyCallback;
+import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackLocation;
 
 //Inspired from lesson 9 and the democode from the lesson
 public class LocationActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -52,7 +50,7 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
         vm = new ViewModelProvider(this, new LocationViewModelFactory(getApplication())).get(LocationViewModel.class);
 
         //Indsæt ref??
-        VolleyCallback callback = new VolleyCallback() {
+        VolleyCallbackLocation callback = new VolleyCallbackLocation() {
             @Override
             public void onSucces(Coord result) {
                 lon = result.getLon();
@@ -63,26 +61,6 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
             @Override
             public void onError(Coord result) {
-
-            }
-
-            @Override
-            public void onSuccesPlayer(Player result) {
-
-            }
-
-            @Override
-            public void onErrorPlayer(Player result) {
-
-            }
-
-            @Override
-            public void onSuccesGame(Game result) {
-
-            }
-
-            @Override
-            public void onErrorGame(Game result) {
 
             }
         };
