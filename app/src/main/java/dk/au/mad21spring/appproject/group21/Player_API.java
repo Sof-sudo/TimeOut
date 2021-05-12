@@ -52,12 +52,18 @@ public class Player_API {
             @Override
             public void onResponse(String response) {
                 Player player = parseJson(response, update);
-                callback.onSuccesPlayer(player);
-
+                if (player == null)
+                {
+                    callback.onErrorPlayer();
+                }
+                else {
+                    callback.onSuccesPlayer(player);
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                String play = "";
             }
         });
         requestQueue.add(stringRequest);
@@ -68,11 +74,14 @@ public class Player_API {
         Gson gson = new GsonBuilder().create();
         BasketballPlayerAPI playerData = gson.fromJson(json, BasketballPlayerAPI.class);
         Player player = null;
-        if (playerData != null) {
+        if (playerData.getData().size() == 0 || playerData.getData().size() > 1) {
+            return player;
+        }
+        else {
             player = new Player(playerData.getData().get(0).getId(),playerData.getData().get(0).getFirstName(), playerData.getData().get(0).getLastName(),
                     playerData.getData().get(0).getPosition(),playerData.getData().get(0).getHeightFeet(),playerData.getData().get(0).getHeightInches(),
                     playerData.getData().get(0).getWeightPounds(), playerData.getData().get(0).getTeam().getName());
+            return player;
         }
-        return player;
     }
 }

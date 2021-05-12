@@ -71,7 +71,7 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
             }
 
             @Override
-            public void onErrorPlayer(Player result) {
+            public void onErrorPlayer() {
 
             }
         };

@@ -7,5 +7,5 @@ public interface VolleyCallback {
         void onSucces(Coord result);
         void onError(Coord result);
         void onSuccesPlayer(Player result);
-        void onErrorPlayer(Player result);
+        void onErrorPlayer();
 }

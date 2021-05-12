@@ -59,8 +59,8 @@ public class PlayerViewModel extends ViewModel {
         }
 
         @Override
-        public void onErrorPlayer(Player result) {
-
+        public void onErrorPlayer() {
+            Toast.makeText(app, "Player not found", Toast.LENGTH_SHORT).show();
         }
     };
 
