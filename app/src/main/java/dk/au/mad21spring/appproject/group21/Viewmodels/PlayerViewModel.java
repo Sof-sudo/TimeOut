@@ -7,8 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.List;
-
+import dk.au.mad21spring.appproject.group21.Database.Game;
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Database.Team;
 import dk.au.mad21spring.appproject.group21.Location_API.Coord;
@@ -61,6 +60,16 @@ public class PlayerViewModel extends ViewModel {
         @Override
         public void onErrorPlayer() {
             Toast.makeText(app, "Player not found", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccesGame(Game result) {
+
+        }
+
+        @Override
+        public void onErrorGame(Game result) {
+
         }
     };
 

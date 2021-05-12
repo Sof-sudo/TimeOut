@@ -129,9 +129,6 @@ public static final String INDEX = "index";
             double weightInkg = weight * 0.45;
             txtWeight.setText(df.format(weightInkg) +" kg");
         }
-//        else  {
-//            Toast.makeText(this, "Player does not play for this team", Toast.LENGTH_SHORT).show();
-//        }
 
     }
 

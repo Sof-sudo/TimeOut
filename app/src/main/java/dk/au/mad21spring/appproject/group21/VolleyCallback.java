@@ -8,4 +8,6 @@ public interface VolleyCallback {
         void onError(Coord result);
         void onSuccesPlayer(Player result);
         void onErrorPlayer();
+        void onSuccesGame(Game result);
+        void onErrorGame(Game result);
 }

@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Games {
+public class Game {
 
     @PrimaryKey
     private int gameID;
@@ -16,12 +16,11 @@ public class Games {
     private String status;
     private String time;
     private boolean postseason;
+    private String hometeam;
+    private String visitorteam;
 
-    //Teams
-    //private Teams homeTeam;
-    //private Teams visitorTeam;
-
-    public Games(int gameID, String date, int homeTeamScore, int visitorTeamScore, int season, int period, String status, String time, boolean postseason){
+    public Game(int gameID, String date, int homeTeamScore, int visitorTeamScore, int season, int period, String status, String time, boolean postseason
+    , String hometeam, String visitorteam){
         this.gameID = gameID;
         this.date = date;
         this.homeTeamScore = homeTeamScore;
@@ -31,8 +30,8 @@ public class Games {
         this.status = status;
         this.time = time;
         this.postseason = postseason;
-        //this.homeTeam = homeTeam; //ER DET ET TEAMS OBJEKT ELLER SKAL MAN HAVE ALLE VARIABLE SOM I TEAMSKLASSEN HERIND?
-        //this.visitorTeam = visitorTeam;
+        this.hometeam = hometeam;
+        this.visitorteam = visitorteam;
     }
 
     public int getGameID(){return gameID;}
@@ -62,11 +61,20 @@ public class Games {
     public boolean getPostseason(){return postseason;}
     public void setPostseason(boolean postseason){this.postseason = postseason;}
 
-    /*public Teams getHomeTeam(){return homeTeam;}
-    public void setHomeTeam(Teams homeTeam){this.homeTeam = homeTeam;}
+    public String getHometeam() {
+        return hometeam;
+    }
 
-    public Teams getVisitorTeam(){return visitorTeam;}
-    public void setVisitorTeam(Teams visitorTeam){this.visitorTeam = visitorTeam;}
-*/
+    public void setHometeam(String hometeam) {
+        this.hometeam = hometeam;
+    }
+
+    public String getVisitorteam() {
+        return visitorteam;
+    }
+
+    public void setVisitorteam(String visitorteam) {
+        this.visitorteam = visitorteam;
+    }
 }
 
