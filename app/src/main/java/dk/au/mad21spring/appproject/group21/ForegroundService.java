@@ -81,9 +81,11 @@ public class ForegroundService extends Service {//Service LifecycleService
                 try {
                     Thread.sleep(10000);
                 } catch (InterruptedException e) {
-                    Log.e(TAG, "Run Eroor", e);
+                    Log.e(TAG, "Run Error", e);
                 }
+                //repository.updatePlayerAsynch(); //updatere databasen.
                 if (started) {
+
                     NBANotification(repository.getRandomTeam());//RandomTeam()
                     doNotification(); // starter igen
                 }

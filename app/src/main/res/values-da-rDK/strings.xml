@@ -16,4 +16,6 @@
     <string name="txtPlayerPositionStatic">Position</string>
     <string name="txtWeight">Vægt</string>
     <string name="txtHeight">Højde</string>
+    <string name="btnBackLocation">Tilbage</string>
+    <string name="btnMapTypeLocation">Kort type</string>
 </resources>

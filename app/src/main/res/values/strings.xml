@@ -17,4 +17,6 @@
     <string name="txtPlayerPositionStatic">Position</string>
     <string name="txtWeight">Weight</string>
     <string name="txtHeight">Height</string>
+    <string name="btnBackLocation">Back</string>
+    <string name="btnMapTypeLocation">Map type</string>
 </resources>

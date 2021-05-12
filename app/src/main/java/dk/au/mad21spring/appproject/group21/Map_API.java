@@ -1,6 +1,7 @@
 package dk.au.mad21spring.appproject.group21;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -52,7 +53,7 @@ public class Map_API {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Toast.makeText(app, "The city cannot be found", Toast.LENGTH_SHORT).show();
                     }
                 });
                 requestQueue.add(stringRequest);
