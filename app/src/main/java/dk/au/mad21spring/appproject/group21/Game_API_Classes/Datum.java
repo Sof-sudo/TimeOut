@@ -1,12 +1,9 @@
 
-package dk.au.mad21spring.appproject.group21.Game_API;
+package dk.au.mad21spring.appproject.group21.Game_API_Classes;
 
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import dk.au.mad21spring.appproject.group21.Game_API.HomeTeam;
-import dk.au.mad21spring.appproject.group21.Game_API.VisitorTeam;
 
 
 public class Datum {

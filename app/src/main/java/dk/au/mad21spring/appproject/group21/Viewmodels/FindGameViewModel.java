@@ -13,14 +13,14 @@ import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.Repository;
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackGame;
 
-public class LatestGamesViewModel extends ViewModel {
+public class FindGameViewModel extends ViewModel {
 
     private Repository repository;
     private MutableLiveData<Team> team;
     private MutableLiveData<Game> game;
     private Application app;
 
-    public LatestGamesViewModel(Application app){
+    public FindGameViewModel(Application app){
         this.app = app;
         repository = Repository.getInstance(app);
     }

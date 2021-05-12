@@ -18,6 +18,10 @@ import dk.au.mad21spring.appproject.group21.Database.TimeOutDatabase;
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackGame;
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackLocation;
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackPlayer;
+import dk.au.mad21spring.appproject.group21.WEB_API_Classes.GameDate_API;
+import dk.au.mad21spring.appproject.group21.WEB_API_Classes.Map_API;
+import dk.au.mad21spring.appproject.group21.WEB_API_Classes.Player_API;
+import dk.au.mad21spring.appproject.group21.WEB_API_Classes.Team_API;
 
 public class Repository {
 

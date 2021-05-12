@@ -1,4 +1,4 @@
-package dk.au.mad21spring.appproject.group21;
+package dk.au.mad21spring.appproject.group21.WEB_API_Classes;
 
 import android.app.Application;
 import android.widget.Toast;
@@ -16,8 +16,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import dk.au.mad21spring.appproject.group21.Interfaces.VolleyCallbackLocation;
-import dk.au.mad21spring.appproject.group21.Location_API.CityWeather;
-import dk.au.mad21spring.appproject.group21.Location_API.Coord;
+import dk.au.mad21spring.appproject.group21.Location_API_Classes.CityWeather;
+import dk.au.mad21spring.appproject.group21.Location_API_Classes.Coord;
+import dk.au.mad21spring.appproject.group21.Repository;
 
 public class Map_API {
 

@@ -109,7 +109,7 @@ public class TeamActivity extends AppCompatActivity {
 
     private void showGames()
     {
-        Intent intent = new Intent(this, LatestGamesActivity.class);
+        Intent intent = new Intent(this, FindGameActivity.class);
         intent.putExtra(TEAM,teamName);
         startActivity(intent);
     }

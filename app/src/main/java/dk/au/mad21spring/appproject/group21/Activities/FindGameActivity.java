@@ -15,9 +15,9 @@ import android.widget.TextView;
 import dk.au.mad21spring.appproject.group21.Database.Game;
 import dk.au.mad21spring.appproject.group21.Factories.LatestGamesViewModelFactory;
 import dk.au.mad21spring.appproject.group21.R;
-import dk.au.mad21spring.appproject.group21.Viewmodels.LatestGamesViewModel;
+import dk.au.mad21spring.appproject.group21.Viewmodels.FindGameViewModel;
 
-public class LatestGamesActivity extends AppCompatActivity {
+public class FindGameActivity extends AppCompatActivity {
     //public static final String INDEX = "index";
 
     // widgets
@@ -26,7 +26,7 @@ public class LatestGamesActivity extends AppCompatActivity {
     private TextView txtHometeam, txtVisitorteam, txtScoreHometeam, txtScoreVisitorteam;
 
     //ViewModel
-    private LatestGamesViewModel latestGamesViewModel;
+    private FindGameViewModel findGameViewModel;
 
     //Other
     private String teamName;
@@ -38,14 +38,14 @@ public class LatestGamesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_latest_games);
+        setContentView(R.layout.activity_find_game);
 
         Intent data = getIntent();
         teamName = data.getStringExtra(TEAM);
 
         //create ViewModel
-        latestGamesViewModel = new ViewModelProvider(this, new LatestGamesViewModelFactory(getApplication())).get(LatestGamesViewModel.class);
-        latestGamesViewModel.getGame().observe(this, new Observer<Game>() {
+        findGameViewModel = new ViewModelProvider(this, new LatestGamesViewModelFactory(getApplication())).get(FindGameViewModel.class);
+        findGameViewModel.getGame().observe(this, new Observer<Game>() {
             @Override
             public void onChanged(Game game) {
                 showGameData(game);
@@ -83,8 +83,8 @@ public class LatestGamesActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int teamID = latestGamesViewModel.getTeam(teamName).getValue().getTeamID();
-                latestGamesViewModel.loadGame(teamID, date);
+                int teamID = findGameViewModel.getTeam(teamName).getValue().getTeamID();
+                findGameViewModel.loadGame(teamID, date);
             }
         });
     }
