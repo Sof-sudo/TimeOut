@@ -41,9 +41,7 @@ public class ForegroundService extends Service {//Service LifecycleService
     @Override
     public void onCreate() {
         super.onCreate();
-
         repository = Repository.getInstance(getApplication());
-
     }
 
     @Override
