@@ -72,8 +72,6 @@ public class Player_API {
             player = new Player(playerData.getData().get(0).getId(),playerData.getData().get(0).getFirstName(), playerData.getData().get(0).getLastName(),
                     playerData.getData().get(0).getPosition(),playerData.getData().get(0).getHeightFeet(),playerData.getData().get(0).getHeightInches(),
                     playerData.getData().get(0).getWeightPounds(), playerData.getData().get(0).getTeam().getName());
-
-            repository.addPlayerAsynch(player);
         }
         return player;
     }
