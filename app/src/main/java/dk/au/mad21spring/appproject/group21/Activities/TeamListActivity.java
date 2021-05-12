@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -78,7 +79,7 @@ public class TeamListActivity extends AppCompatActivity implements TeamAdapter.I
             intent.putExtra(TEAM,team.getName());
             startActivity(intent);
         } else {
-            //Fejlbesked: Holdet er ikke at finde i listen
+
         }
 
         searchField.setText("");

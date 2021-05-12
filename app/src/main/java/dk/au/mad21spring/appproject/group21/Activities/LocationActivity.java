@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,6 +15,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import dk.au.mad21spring.appproject.group21.Database.Player;
 import dk.au.mad21spring.appproject.group21.Factories.LocationViewModelFactory;
@@ -20,6 +25,7 @@ import dk.au.mad21spring.appproject.group21.R;
 import dk.au.mad21spring.appproject.group21.Viewmodels.LocationViewModel;
 import dk.au.mad21spring.appproject.group21.VolleyCallback;
 
+//Inspired from lesson 9 and the democode from the lesson
 public class LocationActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -28,7 +34,12 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
     private double lon;
     private double lat;
 
+    private Button btnBack;
+    private Button btnMapType;
+
     public static final String CITY = "CITY";
+
+    private int mapType = GoogleMap.MAP_TYPE_NORMAL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +47,12 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
         setContentView(R.layout.activity_location);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
-
         Intent data = getIntent();
         cityName = data.getStringExtra(CITY);
 
         vm = new ViewModelProvider(this, new LocationViewModelFactory(getApplication())).get(LocationViewModel.class);
 
+        //Indsæt ref??
         VolleyCallback callback = new VolleyCallback() {
             @Override
             public void onSucces(Coord result) {
@@ -69,6 +80,50 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
         vm.getLongLat(cityName, callback);
 
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Back();
+            }
+        });
+
+        btnMapType = findViewById(R.id.btnMapType);
+        btnMapType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChangeMapType();
+            }
+        });
+
+    }
+
+    private void Back(){
+        finish();
+    }
+
+    //Code inspired from democode of TheArnieExerciseFinder
+    private void ChangeMapType(){
+        String s = "";
+        if(mapType == GoogleMap.MAP_TYPE_SATELLITE){
+            mapType = GoogleMap.MAP_TYPE_HYBRID;
+            s = "Hybrid";
+        } else if(mapType == GoogleMap.MAP_TYPE_HYBRID){
+                mapType = GoogleMap.MAP_TYPE_NONE;
+                s = "None";
+        } else if(mapType == GoogleMap.MAP_TYPE_NONE){
+            mapType = GoogleMap.MAP_TYPE_NORMAL;
+            s = "Normal";
+        } else if(mapType == GoogleMap.MAP_TYPE_NORMAL){
+            mapType = GoogleMap.MAP_TYPE_TERRAIN;
+            s = "Terrain";
+        } else if(mapType == GoogleMap.MAP_TYPE_TERRAIN){
+            mapType = GoogleMap.MAP_TYPE_SATELLITE;
+            s = "Satellite";
+        }
+
+        mMap.setMapType(mapType);
+        Toast.makeText(getApplicationContext(), "Maptype changed to " + s, Toast.LENGTH_SHORT).show();
     }
 
     private void setUpMap(){
@@ -76,9 +131,6 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
-
-    //private void getString(VolleyCallback volleyCallback) {
-    //}
 
 
     /**
@@ -94,16 +146,8 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        /*
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        */
-
         LatLng city = new LatLng(lat, lon);
         mMap.addMarker(new MarkerOptions().position(city).title("You are here!"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(city));
-
     }
 }

@@ -125,7 +125,7 @@ public static final String INDEX = "index";
     }
 
     private void showPlayerData(Player result){
-        if (teamName != result.getTeamname()){
+        if (teamName.equals(result.getTeamname())){
             String firstname = result.getFirstname();
             String lastname = result.getLastname();
             txtPlayers.setText(firstname+" "+lastname);
