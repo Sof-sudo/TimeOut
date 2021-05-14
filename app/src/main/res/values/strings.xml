@@ -27,4 +27,6 @@
     <string name="Toast_Player">Player does not play for this team</string>
     <string name="Toast_Latestgames">Game not found</string>
     <string name="Toast_Location">"Maptype changed to "</string>
+    <string name="Toast_Notification_Title">Team data available</string>
+    <string name="Toast_Notification_ContextText">Check out data from</string>
 </resources>

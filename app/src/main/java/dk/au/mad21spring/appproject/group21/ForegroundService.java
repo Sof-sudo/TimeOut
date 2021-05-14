@@ -77,7 +77,7 @@ public class ForegroundService extends Service {//Service LifecycleService
             @Override
             public void run() {
                 try {
-                    Thread.sleep(600000); //10min
+                    Thread.sleep(10000); //10min
                 } catch (InterruptedException e) {
                     Log.e(TAG, "Run Error", e);
                 }
@@ -92,8 +92,8 @@ public class ForegroundService extends Service {//Service LifecycleService
     private void NBANotification(Team team) {
         Log.i(TAG, "Notification NBA");
                Notification notification = new NotificationCompat.Builder(this, SERVICE_CHANNEL)
-                .setContentTitle("Team data available")
-                .setContentText("Check out data from " + team.getFullname())//+ team.getName()
+                .setContentTitle(getResources().getString(R.string.Toast_Notification_Title))
+                .setContentText(getResources().getString(R.string.Toast_Notification_ContextText) +" "+ team.getFullname())//+ team.getName()
                 .setSmallIcon(R.drawable.ic_basketball_24)
                 .build();
         startForeground(NOTIFICATION_id, notification);

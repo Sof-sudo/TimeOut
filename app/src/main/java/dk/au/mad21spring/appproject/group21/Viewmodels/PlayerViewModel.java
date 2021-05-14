@@ -68,6 +68,6 @@ public class PlayerViewModel extends ViewModel {
 
     private void makeToast()
     {
-        Toast.makeText(app, "Player does not play for this team", Toast.LENGTH_SHORT).show();
+        Toast.makeText(app, R.string.Toast_Player, Toast.LENGTH_SHORT).show();
     }
 }
