@@ -47,18 +47,18 @@ public class Repository {
         teamlist = db.teamDao().getAllTeams();
     }
 
-    public Team getRandomTeam(){
-        Random random = new Random();
-        int value = random.nextInt(teamlist.getValue().size());
-        return teamlist.getValue().get(value);
-    }
-
-    // Singleton repository - Created with help from Tri.
+    // Singleton repository
     public static Repository getInstance(Application app){
         if (instance == null){
             instance = new Repository(app);
         }
         return instance;
+    }
+
+    public Team getRandomTeam(){
+        Random random = new Random();
+        int value = random.nextInt(teamlist.getValue().size());
+        return teamlist.getValue().get(value);
     }
 
 
