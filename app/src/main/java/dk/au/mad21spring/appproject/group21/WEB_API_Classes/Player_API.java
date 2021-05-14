@@ -78,23 +78,18 @@ public class Player_API {
 
         if (playerData.getData().size() == 1)
         {
+            if (playerData.getData().get(0).getHeightFeet() == null)
+            {
+                playerData.getData().get(0).setHeightFeet(0);
+                playerData.getData().get(0).setHeightInches(0);
+                playerData.getData().get(0).setWeightPounds(0);
+            }
+
             player = new Player(playerData.getData().get(0).getId(),playerData.getData().get(0).getFirstName(), playerData.getData().get(0).getLastName(),
-                    playerData.getData().get(0).getPosition(),playerData.getData().get(0).getHeightFeet(),playerData.getData().get(0).getHeightInches(),
-                    playerData.getData().get(0).getWeightPounds(), playerData.getData().get(0).getTeam().getName());
+                    playerData.getData().get(0).getPosition(),playerData.getData().get(0).getHeightFeet().doubleValue(),playerData.getData().get(0).getHeightInches().doubleValue(),
+                    playerData.getData().get(0).getWeightPounds().doubleValue(), playerData.getData().get(0).getTeam().getName());
         }
 
         return player;
-
-
-
-//        if (playerData.getData().size() == 0 || playerData.getData().size() > 1) {
-//            return player;
-//        }
-//        else {
-//            player = new Player(playerData.getData().get(0).getId(),playerData.getData().get(0).getFirstName(), playerData.getData().get(0).getLastName(),
-//                    playerData.getData().get(0).getPosition(),playerData.getData().get(0).getHeightFeet(),playerData.getData().get(0).getHeightInches(),
-//                    playerData.getData().get(0).getWeightPounds(), playerData.getData().get(0).getTeam().getName());
-//            return player;
-//        }
     }
 }
