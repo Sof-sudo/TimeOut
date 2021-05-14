@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/btnBackLocation"
-        android:layout_width="150dp"
+        android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:text="@string/btnBackPlayer"
@@ -40,9 +40,9 @@
 
     <Button
         android:id="@+id/btnLocation"
-        android:layout_width="150dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="@string/viewLocation"
@@ -51,8 +51,8 @@
 
     <Button
         android:id="@+id/btnPlayers"
-        android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:text="@string/viewPlayers"
         app:layout_constraintEnd_toEndOf="@+id/btnLocation"
@@ -61,8 +61,8 @@
 
     <Button
         android:id="@+id/btnGames"
-        android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:text="@string/viewLatestGames"
         app:layout_constraintEnd_toEndOf="@+id/btnPlayers"
