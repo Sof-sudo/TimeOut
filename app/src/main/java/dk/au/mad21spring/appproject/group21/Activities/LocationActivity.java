@@ -130,7 +130,6 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-//        if (lat != 0 && lon != 0) {
             mMap = googleMap;
             LatLng city = new LatLng(lat, lon);
             mMap.addMarker(new MarkerOptions().position(city).title("You are here!"));
@@ -138,6 +137,5 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                     new LatLng(city.latitude, city.longitude), 10));
-//        }
     }
 }
